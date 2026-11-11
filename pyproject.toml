@@ -1,0 +1,40 @@
+[project]
+name = "robot-cleaning-vision"
+version = "0.1.0"
+description = "Portable cleaning robot vision system"
+readme = "README.md"
+authors = [
+    { name = "tin_101", email = "2837798419@qq.com" }
+]
+requires-python = ">=3.12,<3.15"
+dependencies = [
+    "matplotlib>=3.9,<4",
+    "numpy>=2,<3",
+    "opencv-python>=4.10,<5",
+    "pillow>=11,<13",
+    "pycocotools>=2.0.10,<3",
+    "scikit-image>=0.24,<1",
+    "scikit-learn>=1.5,<2",
+    "torch>=2.11,<2.12",
+    "torchvision>=0.26,<0.27",
+]
+
+[project.scripts]
+robot-cleaning-vision = "robot_cleaning_vision.main:main"
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu128", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+]
+torchvision = [
+    { index = "pytorch-cu128", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
