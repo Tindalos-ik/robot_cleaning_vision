@@ -12,3 +12,6 @@ wheels/
 # Local dataset files
 /data/raw/
 /data/downloads/
+
+# One shared local image collection; processed annotations/manifests are versioned
+/data/processed/**/images/
