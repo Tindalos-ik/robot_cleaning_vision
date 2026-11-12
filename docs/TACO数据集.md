@@ -1,6 +1,6 @@
 # TACO 数据集
 
-三种模型共用 `data/raw/taco/annotations_project.json` 和其中固定的 train/val/test。原图仍按官方 `file_name` 位于 `data/raw/taco/`，不复制图片。生成命令、统一读取示例见 [dataprocessing/README.md](../dataprocessing/README.md)。
+三种模型共用 `data/raw/taco/annotations_project.json` 和其中固定的 train/val/test。原图仍按官方 `file_name` 位于 `data/raw/taco/`。生成命令、统一读取示例见 [dataprocessing/README.md](../dataprocessing/README.md)。
 
 ```bash
 uv run python -m dataprocessing --input data/raw/taco --output data/raw/taco/annotations_project.json --seed 42
@@ -37,6 +37,11 @@ uv run python -m dataprocessing --input data/raw/taco --output data/raw/taco/ann
 留出原因：类别待定 608 张、无效框 7 张，其中 4 张重叠。逐图原因见 `project.held_out`。
 
 ## 场景分组
+
+ 场景分组，就是把可能来自同一拍摄场景、或内容高度相似的图片放在一组。
+
+ 例如，同一个地面上的垃圾，换角度拍了三张。这三张不能分别进入训练集和测试集，否则模型
+ 可能只是“见过这个场景”，测试成绩会偏高
 
 按源 URL、文件及方向归一像素哈希、相机拍摄日期、GPS 和确定性图像相似性建立场景组，疑似关联保守合并。batch 仅表示存储位置，缺少 EXIF/GPS 不排除图片。
 

@@ -1,5 +1,7 @@
 # 清洁机器人视觉系统
 
+机器人视觉系统，识别物品进行五项分类
+
 ## 目录结构
 
 ```text
@@ -56,6 +58,8 @@ uv run --locked python -c "import torch; print(torch.cuda.is_available())"
 
 ## 摄像头采集
 
+模块原理与代码阅读说明见[第一模块：图像采集知识整理](docs/01_图像采集模块知识整理.md)。
+
 在项目根目录运行（需要摄像头和可显示 OpenCV 窗口的本地桌面）：
 
 ```bash
@@ -93,23 +97,5 @@ uv run robot-cleaning-vision capture --help
 | `width`、`height` | 实际保存宽、高，单位像素。 |
 | `camera_source` | 设备索引或视频流地址/视频文件路径的字符串表示。 |
 
-先写成功图片，再追加对应元数据；CSV 表头不匹配会报错而非覆盖。可处理的写入失败会清理本次未登记图片并回退 CSV 追加；不保证断电、进程强杀或多个采集进程同时写同一输出目录时的事务性，请使用单个写入进程。采集只生成图片和元数据；类别、边界框及 `PASS/FAIL` 由后续标注流程生成。
+先写成功图片，再追加对应元数据；CSV 表头不匹配会报错而非覆盖。可处理的写入失败会清理本次未登记图片并回退 CSV 追加。采集只生成图片和元数据；类别、边界框及 `PASS/FAIL` 由后续标注流程生成。
 
-### 供模型循环复用的接口
-
-`capture.camera.Camera` 提供 `open()`、`read()`、`release()` 和 `with` 上下文管理，不依赖窗口或按键。`read()` 返回原始 BGR `numpy.ndarray`，形状为 `(height, width, 3)`，`dtype=uint8`，不会缩放或叠字：
-
-```python
-from robot_cleaning_vision.capture.camera import Camera
-
-with Camera(0, width=640, height=480) as camera:
-    frame = camera.read()
-```
-
-`capture.storage.ImageStore(output, scene_id, camera_source).save(frame)` 可独立保存原始 BGR 帧并返回元数据 `ImageRecord`；可用 `captured_at=` 传入带时区的 `datetime`，未传入时使用保存时刻。`capture.preview.run_capture()` 单独负责窗口和按键。
-
-存储回归验证（标准库 `unittest`，无需摄像头）：
-
-```bash
-uv run --locked python -m unittest discover -s tests -p test_capture_storage.py -v
-```

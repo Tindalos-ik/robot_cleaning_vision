@@ -6,6 +6,7 @@ import cv2
 import numpy as np
 from numpy.typing import NDArray
 
+# 声明 一个 BGR 图像帧类型，一个数组，元素为 uint8，形状为 (高, 宽, 3)，3 是 BGR 通道数
 BGRFrame = NDArray[np.uint8]
 
 
@@ -23,12 +24,12 @@ class Camera:
         """配置设备但不打开。
 
         参数：source 为 int 设备索引（默认 0），或 str 视频流地址/视频文件路径；
-        相对文件路径以进程工作目录为基准。width、height 分别为期望宽、高，
+        相对文件路径以进程工作目录为基准。
+        width、height 分别为期望宽、高，
         单位像素，默认 None 表示采用设备默认值，设备可能忽略设置。
-        返回：None。异常：尺寸非正时抛出 ValueError。
+        返回：None。
         """
-        if (width is not None and width <= 0) or (height is not None and height <= 0):
-            raise ValueError("采集宽度和高度必须为正整数（像素）。")
+
         self.source = source
         self.width = width
         self.height = height
@@ -39,7 +40,7 @@ class Camera:
 
         参数：无，使用构造时的来源和宽、高（像素）。
         返回：当前 Camera 实例。异常：打开或配置失败抛出 CameraError；
-        失败前已创建的设备也会释放，不保留半打开状态。
+        失败前已创建的设备也会释放。
         """
         if self._device is not None:
             return self
@@ -62,7 +63,8 @@ class Camera:
     def read(self) -> BGRFrame:
         """读取一帧原始图像，不缩放、不叠字、不转换通道。
 
-        参数：无，须先 open()。返回：numpy.ndarray，shape=(height, width, 3)，
+        参数：无，须先 open()。
+        返回：numpy.ndarray，shape=(height, width, 3)，
         通道顺序 BGR，dtype=uint8；宽、高以本次实际帧为准，单位像素。
         异常：未打开、读取失败（包括流结束）或帧格式不符时抛出 CameraError。
         读帧失败会立即释放设备；正常读取后由调用者 release() 或 with 释放。

@@ -15,3 +15,9 @@ wheels/
 
 # One shared local image collection; processed annotations/manifests are versioned
 /data/processed/**/images/
+
+# Local reference documents
+/docs/Project-Rob.pdf
+/docs/Project-Rob_全文翻译.md
+
+/opencv_learning/

@@ -1,6 +1,6 @@
 """清洁机器人视觉系统命令行入口。"""
 
-import argparse
+import argparse # 读取命令行参数
 
 import cv2
 
@@ -44,6 +44,8 @@ def main() -> None:
     返回：None。异常：帮助或参数错误由 argparse 抛出 SystemExit；运行错误
     报告原因并以状态码 1 退出，键盘中断以状态码 130 退出。
     """
+
+    # 定义允许的命令行参数
     parser = argparse.ArgumentParser(
         prog="robot-cleaning-vision",
         description="清洁机器人视觉系统。",
@@ -74,6 +76,8 @@ def main() -> None:
         "--height", type=_positive_pixels, metavar="PIXELS",
         help="请求采集高度（正整数像素），默认使用设备配置；实际高度以读帧为准。",
     )
+
+    # 解析命令行参数
     args = parser.parse_args()
     if args.command is None:
         parser.print_help()
