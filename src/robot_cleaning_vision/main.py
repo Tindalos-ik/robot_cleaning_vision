@@ -11,6 +11,7 @@ from PIL import Image
 from .capture.camera import CameraError
 from .capture.preview import run_capture
 from .capture.storage import SaveError
+from .inference import DEFAULT_CAMERA, DEFAULT_FONT, DEFAULT_OUTPUT, run
 from .postprocessing import postprocess_classification, postprocess_detection
 from .preprocessing import preprocess
 from .visualization import ResultRenderer
@@ -99,7 +100,7 @@ def _run_offline(args: argparse.Namespace) -> None:
 
 
 def main() -> None:
-    """解析统一命令行并执行采集或离线处理；无子命令时输出帮助。
+    """解析统一命令行并执行采集、已有预测处理或真实模型推理。
 
     参数：无，从进程命令行读取参数，相对路径基于进程工作目录。
     返回：None。异常：帮助或参数错误由 argparse 抛出 SystemExit；运行错误
@@ -159,6 +160,23 @@ def main() -> None:
     process.add_argument(
         "--output", type=Path, required=True, help="新标注 PNG 路径，父目录须存在，不覆盖。",
     )
+    inference = subparsers.add_parser(
+        "run", help="使用固定最优 MLP 识别图片或实时摄像头，显示中文结果。",
+    )
+    inference.add_argument(
+        "--input", type=Path, help="原始图片路径；省略时打开摄像头。",
+    )
+    inference.add_argument(
+        "--camera", type=_camera_source, default=DEFAULT_CAMERA, metavar="SOURCE",
+        help="摄像头整数索引（默认 0），或视频流地址/本地视频路径。",
+    )
+    inference.add_argument(
+        "--font", type=Path, default=DEFAULT_FONT, help=f"中文字体，默认 {DEFAULT_FONT}。",
+    )
+    inference.add_argument(
+        "--output", type=Path, default=DEFAULT_OUTPUT, metavar="DIR",
+        help=f"输出根目录，默认 {DEFAULT_OUTPUT}；每次保存新建目录，不覆盖。",
+    )
 
     # 解析命令行参数
     args = parser.parse_args()
@@ -170,12 +188,14 @@ def main() -> None:
             run_capture(
                 args.camera, args.output, args.scene_id, width=args.width, height=args.height,
             )
+        elif args.command == "run":
+            run(input_path=args.input, camera=args.camera, font=args.font, output=args.output)
         else:
             _run_offline(args)
     except KeyboardInterrupt:
         parser.exit(130, "操作已中断，已打开的资源已释放。\n")
     except (CameraError, SaveError, ValueError, OSError, cv2.error) as error:
-        parser.exit(1, f"{'采集' if args.command == 'capture' else '离线处理'}失败：{error}\n")
+        parser.exit(1, f"{args.command} 失败：{error}\n")
 
 
 if __name__ == "__main__":

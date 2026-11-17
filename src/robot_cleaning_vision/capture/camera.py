@@ -2,6 +2,7 @@
 
 from types import TracebackType
 
+import sys
 import cv2
 import numpy as np
 from numpy.typing import NDArray
@@ -41,12 +42,18 @@ class Camera:
         参数：无，使用构造时的来源和宽、高（像素）。
         返回：当前 Camera 实例。异常：打开或配置失败抛出 CameraError；
         失败前已创建的设备也会释放。
+
+        Windows 的整数摄像头索引使用 DirectShow，避免部分设备在 MSMF 下无法读帧；
+        视频文件、网络流和其他系统仍由 OpenCV 自动选择后端。
         """
         if self._device is not None:
             return self
         device = cv2.VideoCapture()
+        backend = cv2.CAP_ANY
+        if sys.platform == "win32" and isinstance(self.source, int):
+            backend = cv2.CAP_DSHOW
         try:
-            if not device.open(self.source):
+            if not device.open(self.source, backend):
                 raise CameraError(f"无法打开摄像头或视频流：{self.source!r}")
             if self.width is not None:
                 device.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)

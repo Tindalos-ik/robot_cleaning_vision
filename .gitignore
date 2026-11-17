@@ -21,3 +21,7 @@ wheels/
 /docs/Project-Rob_全文翻译.md
 
 /opencv_learning/
+
+# Local model checkpoints, predictions and experiment reports
+/artifacts/
+

@@ -56,10 +56,34 @@ uv run --locked python -c "import torch; print(torch.cuda.is_available())"
 ```
 
 
+## 手工特征 + MLP
+
+已接入最优保留模型的整图 PASS/FAIL 分类，模型固定为 `artifacts/mlp/model.pt`。
+
+```bash
+# 默认摄像头0实时识别
+uv run robot-cleaning-vision run
+# 单张图片真实推理
+uv run robot-cleaning-vision run --input data/raw/taco/batch_5/000103.JPG
+```
+
+重新训练同一结构（配置在`models/mlp/train.py`顶部）：
+
+```bash
+uv run python -m robot_cleaning_vision.models.mlp.train
+```
+
+新权重与训练报告保存到`artifacts/mlp/training/<时间戳>/`，不覆盖当前实测模型。
+
+摄像头窗口按 `Q` / `Esc` 退出，按 `S` / 空格保存当前原图、预测JSON及中文标注图。
+模型已保存判定阈值，不需要额外输入模型参数或预测文件。
+特征原理、保留模型的效果和场景实测说明见 [手工特征 + MLP](docs/手工特征+MLP.md)。
+当前保留一个实测MLP模型及同一结构的完整训练流程；CNN与检测器目录仍未实现推理。
+
 ## 离线处理入口
 
 `main.py` 提供 `process` 子命令，将原图、已有模型预测与三个公共模块接通。
-模型目录目前没有推理实现；该命令**读取真实预测文件，不执行推理或生成模拟预测**，
+该命令**读取真实预测文件，不执行推理或生成模拟预测**，
 也不打开摄像头或窗口。原有 `capture` 命令不变。
 
 ```bash
