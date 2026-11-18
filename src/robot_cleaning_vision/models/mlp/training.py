@@ -233,7 +233,7 @@ def evaluation_metrics(labels, probabilities, threshold):
 
 
 def train_model(train_dataset, val_dataset, output_root, *, annotations, proposal, region_config,
-                image_config, folds=3, seed=42, minimum_recall=0.9):
+                image_config, folds=3, seed=42, minimum_recall=0.9, provenance=None):
     """完整重训选定结构，结果另存目录，不修改当前实测模型。
 
     顺序：
@@ -242,6 +242,8 @@ def train_model(train_dataset, val_dataset, output_root, *, annotations, proposa
     3. 使用全部train区域训练最终部署用的区域网络，给val打分。
     4. 用train折外88维输入训练整图网络，以val损失早停。
     5. 由val选择阈值，保存两个网络及各自标准化参数。
+
+    参数 provenance 为入口记录的数据来源、标注路径和 SHA256，可供训练报告回查。
     """
     torch.set_num_threads(1)
     train_bags, patches = prepare_dataset(train_dataset, proposal, training=True, seed=seed)
@@ -316,6 +318,8 @@ def train_model(train_dataset, val_dataset, output_root, *, annotations, proposa
                      'background_source': 'random automatic windows mapped by original image size'},
         'region_config': region_config, 'image_config': image_config,
         'annotations_sha256': hashlib.sha256(Path(annotations).read_bytes()).hexdigest(),
+        'annotations': str(annotations),
+        'data_provenance': provenance,
         'seed': seed, 'fold_seed': 123, 'folds': fold_reports,
         'fold_policy': 'StratifiedGroupKFold on train group_id; fit-only patch scaler and weights',
         'train_image_ids': train_ids.tolist(),

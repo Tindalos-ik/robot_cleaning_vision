@@ -56,29 +56,50 @@ uv run --locked python -c "import torch; print(torch.cuda.is_available())"
 ```
 
 
-## 手工特征 + MLP
+## 整图识别
 
-已接入最优保留模型的整图 PASS/FAIL 分类，模型固定为 `artifacts/mlp/model.pt`。
-
-```bash
-# 默认摄像头0实时识别
-uv run robot-cleaning-vision run
-# 单张图片真实推理
-uv run robot-cleaning-vision run --input data/raw/taco/batch_5/000103.JPG
-```
-
-重新训练同一结构（配置在`models/mlp/train.py`顶部）：
+`run` 必须用 `--model` 指定 `baseline1`（手工特征 + MLP）或 `baseline2`（冻结 ResNet-50 + 逻辑回归）。
 
 ```bash
-uv run python -m robot_cleaning_vision.models.mlp.train
+# baseline1：识别单张图片
+uv run --locked robot-cleaning-vision run --model baseline1 --input data/raw/taco/batch_5/000103.JPG
+# baseline2：识别单张图片
+uv run --locked robot-cleaning-vision run --model baseline2 --input data/raw/taco/batch_5/000103.JPG
+# baseline2：使用摄像头 0
+uv run --locked robot-cleaning-vision run --model baseline2 --camera 0
 ```
 
-新权重与训练报告保存到`artifacts/mlp/training/<时间戳>/`，不覆盖当前实测模型。
+`baseline1` 默认读取 `artifacts/mlp/model.pt`，命令行实测阈值保持 `0.5`。
+`baseline2` 默认读取 `artifacts/cnn_linear/model.pt`，使用权重内保存的 384×384 预处理配置和验证集阈值。
+使用 `--model-path` 可指定所选模型的 `model.pt`，例如试用另一次训练的产物。
 
-摄像头窗口按 `Q` / `Esc` 退出，按 `S` / 空格保存当前原图、预测JSON及中文标注图。
-模型已保存判定阈值，不需要额外输入模型参数或预测文件。
-特征原理、保留模型的效果和场景实测说明见 [手工特征 + MLP](docs/手工特征+MLP.md)。
-当前保留一个实测MLP模型及同一结构的完整训练流程；CNN与检测器目录仍未实现推理。
+图片模式保存原图、预测 JSON 和中文标注图；摄像头窗口按 `S` / 空格保存当前帧，
+按 `Q` / `Esc` 或关闭窗口退出。两种模式都在 `artifacts/inference/` 下为每次保存新建目录。
+预测 JSON 记录模型 ID、名称、权重路径、FAIL 概率、阈值和判定。
+
+### 重新训练
+
+先按 [TACO 数据处理指南](dataprocessing/README.md) 准备 `data/raw/taco/annotations_project.json`，
+再从项目根目录运行：
+
+```bash
+uv run --locked python -m robot_cleaning_vision.models.mlp.train
+uv run --locked python -m robot_cleaning_vision.models.cnn_linear.train
+```
+
+MLP 流程及产物见 [手工特征 + MLP](docs/手工特征+MLP.md)；默认只使用固定的 TACO 分区，
+可按[补充数据指南](dataprocessing/README.md)扩充 MLP 训练集。
+
+CNN 流程见 [冻结 CNN + 线性分类器](docs/冻结CNN+线性分类器.md)。训练固定使用
+TACO train、审核后的 CoxPWD/Wikimedia 训练图及 Indoor Waste train，
+输入 384×384，逻辑回归 `C=0.001`。首次训练需要获取 torchvision 的
+`ResNet50_Weights.IMAGENET1K_V2`；已有 PyTorch 缓存时可复用。
+TACO val 用于选阈值，test 和本地实测数据保持独立。
+
+CNN 每次训练只在 `artifacts/cnn_linear/training/<时间戳_随机后缀>/model.pt`
+保存一份新权重，包含 CNN、逻辑回归、标准化参数、预处理配置、标签映射及完整精度阈值。
+验证结果在终端打印，不生成指标文件或逐图预测表，也不覆盖默认权重。
+使用 `--model-path` 可直接加载新权重；正常推理可独立离线加载 `model.pt`。
 
 ## 离线处理入口
 
@@ -131,7 +152,7 @@ uv run robot-cleaning-vision process --help
 
 ## 摄像头采集
 
-模块原理与代码阅读说明见[第一模块：图像采集知识整理](docs/01_图像采集模块知识整理.md)。
+模块原理与代码阅读说明见[图像采集模块](docs/图像采集模块.md)。
 
 在项目根目录运行（需要摄像头和可显示 OpenCV 窗口的本地桌面）：
 

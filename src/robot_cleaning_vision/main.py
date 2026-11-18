@@ -11,7 +11,7 @@ from PIL import Image
 from .capture.camera import CameraError
 from .capture.preview import run_capture
 from .capture.storage import SaveError
-from .inference import DEFAULT_CAMERA, DEFAULT_FONT, DEFAULT_OUTPUT, run
+from .inference import DEFAULT_CAMERA, DEFAULT_FONT, DEFAULT_OUTPUT, MODEL_IDS, run
 from .postprocessing import postprocess_classification, postprocess_detection
 from .preprocessing import preprocess
 from .visualization import ResultRenderer
@@ -161,7 +161,13 @@ def main() -> None:
         "--output", type=Path, required=True, help="新标注 PNG 路径，父目录须存在，不覆盖。",
     )
     inference = subparsers.add_parser(
-        "run", help="使用固定最优 MLP 识别图片或实时摄像头，显示中文结果。",
+        "run", help="选择整图分类模型识别图片或实时摄像头，显示中文结果。",
+    )
+    inference.add_argument(
+        "--model", choices=MODEL_IDS, required=True, help="指定本次推理使用的分类模型。",
+    )
+    inference.add_argument(
+        "--model-path", type=Path, help="指定所选模型的权重文件；省略时使用默认权重。",
     )
     inference.add_argument(
         "--input", type=Path, help="原始图片路径；省略时打开摄像头。",
@@ -189,7 +195,10 @@ def main() -> None:
                 args.camera, args.output, args.scene_id, width=args.width, height=args.height,
             )
         elif args.command == "run":
-            run(input_path=args.input, camera=args.camera, font=args.font, output=args.output)
+            run(
+                input_path=args.input, camera=args.camera, font=args.font, output=args.output,
+                model_id=args.model, model_path=args.model_path,
+            )
         else:
             _run_offline(args)
     except KeyboardInterrupt:

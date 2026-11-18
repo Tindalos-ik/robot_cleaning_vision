@@ -6,16 +6,16 @@
 
 ```bash
 # 摄像头0：实时识别
-uv run robot-cleaning-vision run
+uv run robot-cleaning-vision run --model baseline1
 
 # 指定图片：预测并保存结果
-uv run robot-cleaning-vision run --input data/raw/taco/batch_5/000103.JPG
+uv run robot-cleaning-vision run --model baseline1 --input data/raw/taco/batch_5/000103.JPG
 
 # 换摄像头
-uv run robot-cleaning-vision run --camera 1
+uv run robot-cleaning-vision run --model baseline1 --camera 1
 ```
 
-默认加载 `artifacts/mlp/model.pt`，使用模型内的阈值，不需要手动选择模型或输入预测文件。
+默认加载 `artifacts/mlp/model.pt`；命令行实测使用 `0.5` 阈值，无需指定权重或预测文件。
 
 - 摄像头窗口：`Q` / `Esc` / 关闭窗口退出；`S` / 空格保存当前帧。
 - 图片模式：保存预测JSON与中文结果PNG。
@@ -29,7 +29,7 @@ Windows下，整数摄像头索引使用DirectShow后端，视频文件和网络
 
 **FAIL表示检出项目目标，PASS表示未检出。** 项目目标包括罐、瓶、柔性包装物、杯、纸类物品。
 
-窗口右侧显示判定、FAIL分数和当前帧耗时。分数达到 **0.32226136326789856** 时判FAIL。此模型只做整图二分类，不绘目标框、不输出类别或计数。
+窗口右侧显示判定、FAIL 分数和当前帧耗时。命令行实测中分数达到 **0.5** 时判 FAIL。此模型只做整图二分类，不绘目标框、不输出类别或计数。
 
 场景实测时，分别观察有目标场景是否漏检、无目标场景是否误报；保存出错帧便于检查。
 
@@ -61,12 +61,12 @@ flowchart TD
     P --> Q["ReLU"]
     Q --> R["整图全连接层：8 → 1"]
     R --> S["Sigmoid<br/>整图FAIL分数"]
-    S --> T{"分数 ≥ 0.322261？"}
+    S --> T{"分数 ≥ 0.5？"}
     T -->|是| U["FAIL：检出目标"]
     T -->|否| V["PASS：未检出目标"]
 ```
 
-N是自动生成的窗口数量。图中阈值为显示近似值，实际判定使用模型保存的完整数值。
+N 是自动生成的窗口数量。图中的 `0.5` 是命令行实测阈值。
 
 ### 3.1 输入：图片怎样变成160个数
 
@@ -140,10 +140,8 @@ N是自动生成的窗口数量。图中阈值为显示近似值，实际判定�
 
 ### 3.5 最终判定与代码位置
 
-公共后处理比较整图分数与模型阈值：
-
-- 分数 ≥ `0.32226136326789856`：FAIL。
-- 分数低于阈值：PASS。
+公共后处理比较整图分数与调用方指定的阈值：达到阈值判 FAIL，低于阈值判 PASS。
+命令行实测使用 `0.5`；下文保留的验证集指标使用权重内的 `0.32226136326789856`。
 
 `features.py`负责输入特征；`model.py::_network()`定义两种网络共用的层结构，`score_summary()`完成30维汇总，`MLPModel.predict()`按上述顺序串起计算；`inference.py`负责采集、后处理、中文显示与保存。
 

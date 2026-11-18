@@ -3,7 +3,7 @@
 三种模型共用 `data/raw/taco/annotations_project.json` 和其中固定的 train/val/test。原图仍按官方 `file_name` 位于 `data/raw/taco/`。生成命令、统一读取示例见 [dataprocessing/README.md](../dataprocessing/README.md)。
 
 ```bash
-uv run python -m dataprocessing --input data/raw/taco --output data/raw/taco/annotations_project.json --seed 42
+uv run python -m dataprocessing.taco --input data/raw/taco --output data/raw/taco/annotations_project.json --seed 42
 ```
 
 ## 官方真值与标签口径

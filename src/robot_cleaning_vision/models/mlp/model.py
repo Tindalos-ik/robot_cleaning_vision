@@ -8,6 +8,7 @@
 
 from pathlib import Path
 
+import cv2
 import numpy as np
 import torch
 from torch import nn
@@ -101,6 +102,10 @@ class MLPModel:
     返回整图 FAIL 分数；PASS/FAIL 判定由公共后处理使用 threshold 完成。
     """
 
+    model_id = "baseline1"
+    model_name = "MLP"
+    model_path = DEFAULT_MODEL_PATH
+
     def __init__(self, checkpoint):
         """从同一个权重文件恢复两级模型，不在预测时重新估计任何参数。"""
         region = checkpoint["region_checkpoint"]
@@ -131,7 +136,9 @@ class MLPModel:
                 or not saved["include_context"] or saved["context_version"] != "local-384-v1"
                 or saved["region_checkpoint"]["mode"] != "color"):
             raise ValueError("Expected the selected HSV160/score30/local58 checkpoint")
-        return cls(saved)
+        model = cls(saved)
+        model.model_path = Path(path).resolve()
+        return model
 
     def predict(self, image) -> float:
         """从 PIL 图像或 RGB 数组得到一个整图 FAIL 分数。
@@ -162,3 +169,7 @@ class MLPModel:
         #    此处不直接比较阈值，外层调用链会用 self.threshold 作统一后处理。
         with torch.inference_mode():
             return float(self.network(torch.from_numpy(normalized[None, :])).sigmoid().numpy().ravel()[0])
+
+    def predict_bgr(self, frame: np.ndarray) -> float:
+        """将 OpenCV 的 BGR 帧 frame 转为 RGB，再计算整图 FAIL 概率。"""
+        return self.predict(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
