@@ -1,0 +1,3095 @@
+[
+  {
+    "original_id": "video_20230131_144523_00075",
+    "sha256": "d45121224295e754365f865740fc506e3c135b21ca7c9bc739bb22dd1d388617",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "PASS",
+    "note": "白墙下近处是单个黑色内凹螺纹盖；周围地面未见目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_145000_00046",
+    "sha256": "79ce3303e5c40c44b10b01ffc444283b6b3cadfcf9257af99ef28ed3ddcb0ae0",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "PASS",
+    "note": "红字展板下的地面有两块棕色碎壳和一瓣米色壳；墙脚无其他可辨物。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 2,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_145440_00043",
+    "sha256": "afbdea5569ee33dc13878c7a4881a9ff200698cb9ea4cb784b606633e1a00e93",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "蓝椅前右侧是白色揉皱纸巾，左边小棕色硬碎片为壳。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "蓝椅前右侧是白色揉皱纸巾，左边小棕色硬碎片为壳。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_150203_00045",
+    "sha256": "575fa1c38607476a70df3e3dee3c511c246b0294b6df1d71a9040c243399cc57",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "斜立告示牌前的左侧薄长白纸边缘翘起，与右边圆形棕盖分离。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 1,
+        "category_id": 5,
+        "reason": "斜立告示牌前的左侧薄长白纸边缘翘起，与右边圆形棕盖分离。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_150550_00050",
+    "sha256": "555f025a54bf0fa2791109c24186c22fcdf6776d516c3eec413a3e900953ea92",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "金属门旁的地面中央是竖起一端的白色纸条，底半段贴地。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "金属门旁的地面中央是竖起一端的白色纸条，底半段贴地。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_151037_00040",
+    "sha256": "b38b5c42286d86b78b6b6115e1acb337673e14fa270cbdb3fc73a53ac652b641",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "窗边蓝椅所在大厅的白色碎纸在前景折成两层，边缘清楚。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "窗边蓝椅所在大厅的白色碎纸在前景折成两层，边缘清楚。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_151437_00049",
+    "sha256": "72e373e9e5c5425a692c16e6a9f6bd4c9bddff0bbefa24da00d332ab425a0ae7",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "PASS",
+    "note": "C 区柱前两片深褐色椭圆壳一正一反，旁边暗点为地面污点。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_152151_00060",
+    "sha256": "135ee843641ce152308fc9041a1c2084a63f044325701ff8a5b656815205d5df",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "D 区座椅前有一件压扁的青绿色独立包装膜，平边和薄膜反光可见。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "D 区座椅前有一件压扁的青绿色独立包装膜，平边和薄膜反光可见。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_152509_00049",
+    "sha256": "ef907c22e5cdab8091e159e122a9133a1724c08ecb30bd86defb3baf6b8f3343",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "PASS",
+    "note": "窗墙和蓝椅之间，单个红色浅塑料盖开口朝上；没有瓶身。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_152707_00037",
+    "sha256": "9b91e77999ddc74bab94609cc9b9b210db602aca96af26b6a10a22ee6636949a",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "C 区棕墙前的蓝盖旁边还有一小团皱白纸，计纸团。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 1,
+        "category_id": 5,
+        "reason": "C 区棕墙前的蓝盖旁边还有一小团皱白纸，计纸团。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_153722_00050",
+    "sha256": "436a8c3186b41d904c807ade5b59e5ccfdf632a7937bc9e185243ffb68a21a22",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "柱边前景是平叠的浅色带页折纸，旁边是座椅及立柱倒影。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "柱边前景是平叠的浅色带页折纸，旁边是座椅及立柱倒影。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_154250_00027",
+    "sha256": "8471f719706627e905a73bee26098e02dab4ad5bbca1385a3716bea781b6a8ba",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "靠窗玻璃门前，折白纸和黄绿色浅圆盖各一个，计折白纸。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "靠窗玻璃门前，折白纸和黄绿色浅圆盖各一个，计折白纸。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_154422_00053",
+    "sha256": "6eb7498707db6251c4fcc566ff0be0115732d0c005ead97cc6f9c0cb9850e2bf",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "玻璃门和蓝色显示屏前，右侧近处单张长方白纸翘起一边。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "玻璃门和蓝色显示屏前，右侧近处单张长方白纸翘起一边。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_154457_00041",
+    "sha256": "08d2e7c41dc2fe3689c460b8616e298854b3cddb3b02f026fe2b50012a51d59b",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "玻璃柜和蓝屏前，左侧白色皱折纸，中央黄色矮盖无瓶身。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "玻璃柜和蓝屏前，左侧白色皱折纸，中央黄色矮盖无瓶身。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_154607_00026",
+    "sha256": "859f810587e446a3ea46c899d0ac51cbc816b7a7fd4c30fb690578aef903663c",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "出口门前右侧有一团带薄皱边的白纸，左边另有独立红盖。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "出口门前右侧有一团带薄皱边的白纸，左边另有独立红盖。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_160014_00033",
+    "sha256": "e4dd79d3f2e788a7fdfcbc09de4ed021732edc9e9c63c4b710d26e5be2a67f1e",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "滚轮柜前是一张橙黄色印花透明包装，卷折的透明边贴地。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "滚轮柜前是一张橙黄色印花透明包装，卷折的透明边贴地。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_160106_00062",
+    "sha256": "cebd3f93667a2185afddf068413d84c63306fa2dd4ca92b1ebc13a36d7bca790",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "滚轮柜旁有紫红色独立柔性包装，封边和皱亮表面朝上。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "滚轮柜旁有紫红色独立柔性包装，封边和皱亮表面朝上。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_160436_00046",
+    "sha256": "73d21aa061ea6386f17d90426a41a7b80e0e3114e1eceb152d2ad4566dda66f1",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "彩虹游乐围网前是有红色条纹和封口褶皱的扁平包装。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "彩虹游乐围网前是有红色条纹和封口褶皱的扁平包装。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_160551_00024",
+    "sha256": "a1931b194ecd57300a02b9c4434a7a953c866f4945e27b485207dbf0412c93d4",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "红棕墙脚附近一团白纸，前景另有一个单独的矮白盖。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 1,
+        "category_id": 5,
+        "reason": "红棕墙脚附近一团白纸，前景另有一个单独的矮白盖。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_161110_00029",
+    "sha256": "eb1675174587f0cb160fbbc2612663cca2f5c96a2ad3a8ffc96c8c7017f92e41",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "手扶梯入口前是一个白色折纸团，能看到几片不透明折边。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "手扶梯入口前是一个白色折纸团，能看到几片不透明折边。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_161826_00039",
+    "sha256": "3cef827c086f9fcec83f2d830b59f1b055ad5b172cebe172ade9f216c37b972e",
+    "source_categories": [
+      "cap",
+      "plastic"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "沿红棕墙脚右侧有黄色柔性包装，左缘另有一个可辨白色矮盖。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "沿红棕墙脚右侧有黄色柔性包装，左缘另有一个可辨白色矮盖。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_162440_00008",
+    "sha256": "815847ba22d45cc86060eae7e91488054c327cfe414b95daffc59077bfc3729e",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "玻璃出口前的纸团皱褶可见；与左边平放白盖相互分开。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "玻璃出口前的纸团皱褶可见；与左边平放白盖相互分开。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_162540_00058",
+    "sha256": "e2cc18f8a0a51ae4e8b440cd42cc204cd4b76e2f95e1a8358e9cca4af7f8872e",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "PASS",
+    "note": "白色立式花盆和出口之间，近处只有一枚红色矮盖，无瓶身。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_162950_00040",
+    "sha256": "e46ea288bda8091a943ef61e301f2e89b99c4ead11b7f3abca5573c8ff2c5e80",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "灰门与绿灯前两块棕色硬壳分开，右前侧还有一团白色皱纸。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [
+      {
+        "source_index": 2,
+        "category_id": 5,
+        "reason": "灰门与绿灯前两块棕色硬壳分开，右前侧还有一团白色皱纸。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_163401_00031",
+    "sha256": "ecde014890d689de4721a81b0b2f9e75ed4f76b0526f353bf74f0c2e35991098",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "扶梯旁一叠印线白纸向上张开，页面与薄纸边缘清楚。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "扶梯旁一叠印线白纸向上张开，页面与薄纸边缘清楚。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_164744_00033",
+    "sha256": "92adca15b45ad13f3c3a544004b9637a97b2c7faeaf506b65181582faf6bc84e",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "玻璃墙与圆花盆之间，前景的单条白纸很薄、边缘不齐。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "玻璃墙与圆花盆之间，前景的单条白纸很薄、边缘不齐。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230131_165030_00026",
+    "sha256": "a3bd41459a951f0b2437165173529e703617524614a79a9e6891de104dcde7fc",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "PASS",
+    "note": "圆柜台前的暗色圆盖矮而直壁、顶面平，地面没有瓶或其他项目目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230131_165147_00072",
+    "sha256": "55f8224d2ffc12ba2ae84591076379d4c5be02058f2b8632dae6b3f95d5c9360",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "terminal-halls",
+    "split": "train",
+    "label": "FAIL",
+    "note": "两扇灰色门框之间有一叠印刷纸，能看见数层卷曲页边。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "两扇灰色门框之间有一叠印刷纸，能看见数层卷曲页边。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_084627_00029",
+    "sha256": "f3c164579b22253b52e7dd64c5ca932b9ce6f143e1b935a6bfec2bca5791af73",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "PASS",
+    "note": "阳光照进玻璃窗的石地面上，单个橙红盖凹口朝上，周边无瓶身或五类目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_084708_00045",
+    "sha256": "c8decafdce38d0435aa73ae2cb25d1140e3ebc52e8453e5e064848d0af4fc4dc",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "PASS",
+    "note": "灰墙前花岗岩上的粉色圆盖侧面有细竖纹，四角和墙脚未见目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_084913_00024",
+    "sha256": "3a92bcdca2ba27c4ddc0cd8893ceac5fc99d477bf4da97ff51d3e1009811321f",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "FAIL",
+    "note": "玻璃扶梯厅中，地上的白色大皱纸摊开，一侧有翻卷薄纸边。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "玻璃扶梯厅中，地上的白色大皱纸摊开，一侧有翻卷薄纸边。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_084934_00022",
+    "sha256": "0fbec1966bbd01b2683167df9f80e0b97e88dacefc20e8e64256a3adc6501914",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "PASS",
+    "note": "扶梯与斜阳交界处只有一个黄绿色短圆盖，盖面可见浅色纹点。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_084958_00024",
+    "sha256": "5a5cbad1d177d0607de8640f2c6498cd043a4b59dc096b6bd672fd5ff5e7581e",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "FAIL",
+    "note": "金属栏杆前的白皱纸斜立在地缝边，折边翘起并投下阴影。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "金属栏杆前的白皱纸斜立在地缝边，折边翘起并投下阴影。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_085135_00006",
+    "sha256": "5ddc49466d0a98dbf40039cb7126a5f35f24f6aeac5f0557ef36e96c0008bde5",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "FAIL",
+    "note": "靠方柱前方左边是独立白色薄皱纸，右边是带裂口的浅棕硬壳。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "靠方柱前方左边是独立白色薄皱纸，右边是带裂口的浅棕硬壳。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_085244_00010",
+    "sha256": "0d5f8cccba67a06c2ff4e541b9ac9ced832609758e90b1ea7134bd8663d3dcc0",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "FAIL",
+    "note": "带格纹的斜坡地板上有一团白皱纸，距离玻璃栏较近，边缘不透明。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "带格纹的斜坡地板上有一团白皱纸，距离玻璃栏较近，边缘不透明。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_085526_00056",
+    "sha256": "f9a257967173fae0305bfc7ba1048fb43e570927cb77ba958031eae9937de20b",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "FAIL",
+    "note": "花岗岩台阶底下的黄黑薄片有印刷和包装封边，翘面下是阴影。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "花岗岩台阶底下的黄黑薄片有印刷和包装封边，翘面下是阴影。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_085622_00030",
+    "sha256": "38403d249fffbfd73987777d76bdec67c29deadbcac9b8b95f7bf8ec2d382868",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "FAIL",
+    "note": "台阶下的黄粉色皱片带印刷，薄亮包装边翻起，计包装物。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "台阶下的黄粉色皱片带印刷，薄亮包装边翻起，计包装物。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_085835_00014",
+    "sha256": "9058c01865eab4af91364d1550ce9cdbe43922da7b9e86c559ab5338dadcefba",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "PASS",
+    "note": "红色台阶标贴旁仅有一个内凹的紫色浅盖，玻璃扶手和整个地面无其他目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_090340_00030",
+    "sha256": "0e8b10591fc0520f4d44f24f073353c0931e9db9f04fc1118916b10bfae997d2",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "station-metal-entry",
+    "split": "test",
+    "label": "PASS",
+    "note": "白墙及黑色墙脚交界前的石地砖缝上，有一瓣浅色硬壳翻面，未见目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_090719_00033",
+    "sha256": "2bcfe255285af7c7d4961d99566504343c243280b59aeb589a96ab2b4d7fdb0e",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "station-metal-entry",
+    "split": "test",
+    "label": "PASS",
+    "note": "金属门前灰石地面只有一个顶上带绿印的白色圆盖，短侧壁与瓶身分开。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_090837_00020",
+    "sha256": "16613bbc39be45c58cdb8a912be798b9408eac80ee7d9d6459cf62df0d9a10db",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "station-metal-entry",
+    "split": "test",
+    "label": "FAIL",
+    "note": "清洁告示牌前有竖起薄皱边的白纸及平放的红色矮盖，计白纸。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "清洁告示牌前有竖起薄皱边的白纸及平放的红色矮盖，计白纸。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_090928_00017",
+    "sha256": "744fedc8899265a1bf593ee6d2fb3495b1dc9e1327410207f05c5202093ab719",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "station-metal-entry",
+    "split": "test",
+    "label": "PASS",
+    "note": "不锈钢收边前的灰石面上，单个黄橙浅盖平放，没有瓶身或散落目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_091202_00020",
+    "sha256": "9cdb87ee85a8e432dc88d3661a437fe95f0fc9ee67e16e0ad487c15f192744d8",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-metal-entry",
+    "split": "test",
+    "label": "FAIL",
+    "note": "橙色灯牌旁，金属条板前的白色纸片一端竖起，其余贴地展开。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "橙色灯牌旁，金属条板前的白色纸片一端竖起，其余贴地展开。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_091402_00016",
+    "sha256": "f9112249a6c7dd057738263372ba8c4e71bbd2dd122fdd07861fdd1fc0822427",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "station-metal-entry",
+    "split": "test",
+    "label": "FAIL",
+    "note": "长条挡板前是黄面银底的印刷柔性包装，皱折的封口竖起。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "长条挡板前是黄面银底的印刷柔性包装，皱折的封口竖起。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_091532_00019",
+    "sha256": "7ce693c9180181c0955e0c9fd621171266321cc1a56b704b3ae54af75baaa817",
+    "source_categories": [
+      "paper",
+      "plastic"
+    ],
+    "group": "station-metal-entry",
+    "split": "test",
+    "label": "FAIL",
+    "note": "防滑沟槽中有银亮封边的包装和独立的哑光白纸团，二者各计一个。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "防滑沟槽中有银亮封边的包装和独立的哑光白纸团，二者各计一个。"
+      },
+      {
+        "source_index": 1,
+        "category_id": 3,
+        "reason": "防滑沟槽中有银亮封边的包装和独立的哑光白纸团，二者各计一个。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_091625_00010",
+    "sha256": "dcce74f197c7be8b92866532fe08b99129643fc7413227832ede27e735684c93",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "FAIL",
+    "note": "闸机前石面上有一条长皱纸和一个稍小白色折片，两件之间有空隙。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 2
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "闸机前石面上有一条长皱纸和一个稍小白色折片，两件之间有空隙。"
+      },
+      {
+        "source_index": 1,
+        "category_id": 5,
+        "reason": "闸机前石面上有一条长皱纸和一个稍小白色折片，两件之间有空隙。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_091728_00028",
+    "sha256": "112c533da203ee6423e1df1628c0f5cec4f3cfe4681bc2ce2edfee62474e7a64",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "FAIL",
+    "note": "玻璃门与橙色门框前的条纹石地板上，一团白折纸贴着一条亮光反射。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "玻璃门与橙色门框前的条纹石地板上，一团白折纸贴着一条亮光反射。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_092252_00024",
+    "sha256": "a1ce91d1a2664796c0ff7f758c22c9d4f3a2276563e805d87d495c826d99d73e",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "FAIL",
+    "note": "售票机下方地面有一片浅色弧壳和一片细长硬壳，右边另有一团折纸。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [
+      {
+        "source_index": 2,
+        "category_id": 5,
+        "reason": "售票机下方地面有一片浅色弧壳和一片细长硬壳，右边另有一团折纸。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_092343_00022",
+    "sha256": "c7f4b1c81909bd1acf86a3c9752c1b2b1528ddafca24cedb99d1ee2f99a82455",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "PASS",
+    "note": "蓝色立架底座前散有三瓣浅褐薄壳，光滑外侧和断口可分辨，周边无目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 2,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_092800_00034",
+    "sha256": "301f0a79a9ec16ac3e65c934cdda99a8b7a3e54d167c9a87d18203d775cd59fc",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "FAIL",
+    "note": "白色立架脚附近的地面上有一小团皱白纸，一侧竖起且没有类似容器的轮廓。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "白色立架脚附近的地面上有一小团皱白纸，一侧竖起且没有类似容器的轮廓。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_092943_00042",
+    "sha256": "a4421de55c8baf670665522f8bd3bab9efa8f6e6a63ff68ccb9208603fc3295b",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "FAIL",
+    "note": "大厅有橙柱与青柜，近处灰白薄纸揉过后摊开，边沿独立于石面反光。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "大厅有橙柱与青柜，近处灰白薄纸揉过后摊开，边沿独立于石面反光。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_093121_00043",
+    "sha256": "bd805276749efcea66d4c42b5790b4887bd7cf6c2a5bb813236b9909febeaae2",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "PASS",
+    "note": "黑色墙脚前的单个棕色裂壳有明显凹面和弯边，四周地面为空。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_093408_00024",
+    "sha256": "a02a298e21f6866acdcb02545635d082ec6bca52d4a89d798a6b7c61e159f642",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "PASS",
+    "note": "青色柜台前的石砖上可见四枚深浅不同的裂边硬壳，柜台反光未遮住其他目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 2,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 3,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_093610_00016",
+    "sha256": "26b296987c020f77e893550e0c0c21864ed3213101c2b478f262cba0c9e9c0f0",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "FAIL",
+    "note": "闸机通道边三块带凹口壳片之间有白灰色皱纸，计纸一件。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "闸机通道边三块带凹口壳片之间有白灰色皱纸，计纸一件。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 2,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 3,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_093903_00029",
+    "sha256": "8cbbff097167890ba193172d89302ddf80cdafcabf04b077ce485a48622d4a72",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "station-gate-hall",
+    "split": "test",
+    "label": "PASS",
+    "note": "黑色墙脚前地面仅有红边白面的矮盖，顶面无开口瓶身。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_094005_00040",
+    "sha256": "c14bab0bd415b92e5990c784da25358533c49c2566fd371312e5e06dc8a3be35",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-granite-corridor",
+    "split": "test",
+    "label": "FAIL",
+    "note": "黑色长墙脚前，斑点地面中央是一片摊开的白皱纸，几处折边与石纹可分辨。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "黑色长墙脚前，斑点地面中央是一片摊开的白皱纸，几处折边与石纹可分辨。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_094533_00019",
+    "sha256": "8a4481f2e0ef01c188196a311863e7edfe7521d47e404b7ecf424e7ac52c56fc",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "station-granite-corridor",
+    "split": "test",
+    "label": "FAIL",
+    "note": "白墙过道上有一件紫色印刷封边膜和一件亮银色揉皱包膜，两件均可辨。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 2,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "白墙过道上有一件紫色印刷封边膜和一件亮银色揉皱包膜，两件均可辨。"
+      },
+      {
+        "source_index": 1,
+        "category_id": 3,
+        "reason": "白墙过道上有一件紫色印刷封边膜和一件亮银色揉皱包膜，两件均可辨。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_094827_00028",
+    "sha256": "7bfcd8f9cc5a564090047d1c154f935f5fd92666881275b36ac017b2ff280587",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "station-granite-corridor",
+    "split": "test",
+    "label": "FAIL",
+    "note": "圆形绿色地标前有一团红色金属光泽的薄包装膜，折口向上。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "圆形绿色地标前有一团红色金属光泽的薄包装膜，折口向上。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_095239_00019",
+    "sha256": "876214d60716eec9fa0b642feabea712f3f0e56bf70f4cbd1ff7cf16440a589b",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-granite-corridor",
+    "split": "test",
+    "label": "FAIL",
+    "note": "黑色金属墙脚边有一团白纸，翘起的褶皱和靠地边均可见。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "黑色金属墙脚边有一团白纸，翘起的褶皱和靠地边均可见。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_095720_00051",
+    "sha256": "adb2330fffa3b4d9385cfe3c449e8a6bb10ac545c2bda22f17a5693699eede19",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "station-granite-corridor",
+    "split": "test",
+    "label": "FAIL",
+    "note": "白墙前是带深青色印色的金属光泽薄膜，左右扭卷的边缘符合柔性包装。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "白墙前是带深青色印色的金属光泽薄膜，左右扭卷的边缘符合柔性包装。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_101137_00025",
+    "sha256": "4c7fa1ef2d3c60d815ed32f2b41cc68656f08f48024e00ed70323709d3dd8dce",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "station-granite-corridor",
+    "split": "test",
+    "label": "PASS",
+    "note": "灰石地面上只有一个透白敞口浅盖，短圆壁独立于白墙的黑色底边。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_101423_00023",
+    "sha256": "2e0eb7076b484692121979f73969af931a53eeb74c44c92565c5588147ca5581",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "FAIL",
+    "note": "有上行箭头的楼梯旁，一团棕色纸折起数层，薄直边可见。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "有上行箭头的楼梯旁，一团棕色纸折起数层，薄直边可见。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_101708_00032",
+    "sha256": "c0965fb4e76a4465eb276cdf7680371038aa569b60cba2e5250ee8b6000e895c",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "station-glazed-stair",
+    "split": "test",
+    "label": "FAIL",
+    "note": "落地玻璃和扶梯之前有一条狭长白纸，一边竖卷，另一边贴在粗石面缝上。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "落地玻璃和扶梯之前有一条狭长白纸，一边竖卷，另一边贴在粗石面缝上。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_102241_00045",
+    "sha256": "1082ab3472b9d0c8b80188cef6aad8c77d6b984696107163a764846a3a1433f3",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "金属柱左前方的地砖上有一团薄白皱纸，柜脚倒影与纸边分开。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "金属柱左前方的地砖上有一团薄白皱纸，柜脚倒影与纸边分开。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_102409_00012",
+    "sha256": "afdf7cd3ea018f8b8504775329cde33801654c68d41409db9e863a859327670f",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "PASS",
+    "note": "粉色门柱与货架之前只见一个敞口的荧光绿塑料盖，边沿矮且无瓶身。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_102440_00020",
+    "sha256": "64398fb3fcd5bfdeef29811583cf083045dd2097d804bcad2a04324576baad6b",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "PASS",
+    "note": "金属柱底前有一枚薄长种壳和一枚开裂浅黄壳；周围地砖清楚可见。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_102655_00013",
+    "sha256": "6bffdef3e6bec8d3af56cb0b1d120dac8f02464acfd4b242ed2422ddfee11fb4",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "PASS",
+    "note": "玻璃店面走廊的左前侧各有一瓣深色细长凹壳，没有五类目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_103051_00013",
+    "sha256": "56b1d70e0c695cc1103aab8bf8bdc26b7a81a3277bf300a45a88bcd36b6d910e",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "PASS",
+    "note": "玻璃铺面边的宽走道中央仅见一块带裂纹的棕色硬壳。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_103237_00004",
+    "sha256": "734cc6317debc7e05daf6fbd9ae91c73f57a942acfba033da55832a71d951e12",
+    "source_categories": [
+      "cap",
+      "plastic"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "橙色玻璃展面前有蓝横纹圆盖和一团带彩印反光的柔性包装，计包装。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 1,
+        "category_id": 3,
+        "reason": "橙色玻璃展面前有蓝横纹圆盖和一团带彩印反光的柔性包装，计包装。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_103306_00023",
+    "sha256": "48f3ee9d29bd5298f2f2b56ed3b88ee4f4deeec6d8083b81b1116cf62dffe6fc",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "PASS",
+    "note": "店面玻璃斜边旁的近处是单个有凹面的黄褐壳，行人位于远端。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_103548_00014",
+    "sha256": "8a49d35184a8872e3212caae4a969c81c6383131288b5a2133d3f1c5218e32b2",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "PASS",
+    "note": "白墙脚前仅见一个深色不透明的矮圆盖；对面是走道和闭合门。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_103842_00014",
+    "sha256": "e5b84b42b2469ae5ad09f7a72f2ad19aa8de3d5ec0faeb303945f65cfbfd713d",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "大型米色摆件底边旁，深色细长硬壳和不透明白皱纸彼此分开。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [
+      {
+        "source_index": 1,
+        "category_id": 5,
+        "reason": "大型米色摆件底边旁，深色细长硬壳和不透明白皱纸彼此分开。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_104242_00009",
+    "sha256": "5aaf2b5e4fb434f2c9d1b142a123c3e134121b438599c2cddc3ba25e3dc174d3",
+    "source_categories": [
+      "paper",
+      "plastic"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "灰门前的白色三角皱纸和紫褐色亮膜包装相隔，薄纸边与袋封边可辨。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "灰门前的白色三角皱纸和紫褐色亮膜包装相隔，薄纸边与袋封边可辨。"
+      },
+      {
+        "source_index": 1,
+        "category_id": 3,
+        "reason": "灰门前的白色三角皱纸和紫褐色亮膜包装相隔，薄纸边与袋封边可辨。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_104552_00017",
+    "sha256": "e0f84cce1721afe8585846d7e0b2c8be42ab870b5137b46fe9a5461fe9e6d194",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "蓝色灯带照出的地面上有一团米白纸，皱边翻折，蓝线为反光。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "蓝色灯带照出的地面上有一团米白纸，皱边翻折，蓝线为反光。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_104749_00017",
+    "sha256": "e10c9a31a2ae797b5f6249a67ad31a8fd88feba9d6a38ed9f4ab27869b00b83c",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "蓝色设备底座边是一团白纸，竖起的薄皱片清楚可见。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "蓝色设备底座边是一团白纸，竖起的薄皱片清楚可见。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_105256_00012",
+    "sha256": "710005358f856ca409703feac47eda0d9cc4d3624eb420958453fd0de72555b3",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "服装店前的透明柔性包装带粉花印刷，可见折叠边和薄膜反光。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "服装店前的透明柔性包装带粉花印刷，可见折叠边和薄膜反光。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_105827_00017",
+    "sha256": "e92ae61bb47f207f46abdcac6cdeea53af29dea057c156b2919bf81370fcb4d6",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "灰色砖墙脚前有一团竖起白纸，纸面不透明，连到贴地的皱边。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "灰色砖墙脚前有一团竖起白纸，纸面不透明，连到贴地的皱边。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_105937_00005",
+    "sha256": "b447da070dcb4c1a5bf272d64e2a10fa17d306b91ac966dd665ac47b07970faf",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "PASS",
+    "note": "柱体金属围边前的白色短圆盖顶上有深色字样，周围没有五类目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_110029_00007",
+    "sha256": "3008ea0e61ee900025904a9186915aec06b27c874f43a75cbdeb66fd1cf0a436",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "红色游乐设施前有一块薄棕色折片，直纸边与细齿状断边可见，未见容器或封口。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "红色游乐设施前有一块薄棕色折片，直纸边与细齿状断边可见，未见容器或封口。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_110236_00008",
+    "sha256": "1e848b11b63bfa6eee4f7ebb0d45ee1faeb3d81bb0232f740671b5ef2d95a7cd",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-glossy-storefronts",
+    "split": "train",
+    "label": "FAIL",
+    "note": "游乐车前方地面有一个灰棕色折纸片，几层薄片朝不同方向翻起。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "游乐车前方地面有一个灰棕色折纸片，几层薄片朝不同方向翻起。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_110542_00013",
+    "sha256": "a82cee9368a4e8d7c44ea80310c86998a3331a555a5bd8b0c84928b45d23d0b8",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "FAIL",
+    "note": "深灰多边形地砖近处是不透明白纸团，两边翘起，固定设备底沿无散落目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "深灰多边形地砖近处是不透明白纸团，两边翘起，固定设备底沿无散落目标。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_110554_00010",
+    "sha256": "8e01b31b55d13ab6b9ffc0742781a1065d631417082b575e543b58dcde74f798",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "PASS",
+    "note": "绿图案玻璃栏前的深灰地砖上，只有一个内壁可见的黄绿浅盖，没有瓶身。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_110620_00010",
+    "sha256": "c4a80f2b025b5a5c3b628410e47b3f2a76bff3bd0e34c76a11f409712d3d7f59",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-arcade-wood",
+    "split": "train",
+    "label": "FAIL",
+    "note": "木纹地面近端是一个有纵向褶皱和不透明折边的白纸团。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "木纹地面近端是一个有纵向褶皱和不透明折边的白纸团。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_110632_00010",
+    "sha256": "8ba194008f12f8a1331287ef2742473c2b738c3812fbfa504dcceaa93a8ac60f",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-arcade-wood",
+    "split": "train",
+    "label": "FAIL",
+    "note": "红色设备基座下方，贴地的白蓝薄纸片边缘不齐，独立于设备底板。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "红色设备基座下方，贴地的白蓝薄纸片边缘不齐，独立于设备底板。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_110705_00022",
+    "sha256": "85f69be654b16ece224bbd410bf6920ccbfa565820dccc57222a5a1a52d9e704",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "mall-arcade-wood",
+    "split": "train",
+    "label": "FAIL",
+    "note": "蓝光游乐机前的黄色印花小袋保有热封锯齿边，外形为柔性包装。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "蓝光游乐机前的黄色印花小袋保有热封锯齿边，外形为柔性包装。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_111025_00015",
+    "sha256": "36bd7e933aedbdf949cc0ccb2de5c8a2403575181515257fc46155bdf7fb319d",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "FAIL",
+    "note": "白墙与长凳前的地面上，白纸小片竖起一角并投下贴地阴影。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "白墙与长凳前的地面上，白纸小片竖起一角并投下贴地阴影。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_111519_00022",
+    "sha256": "074bd9cd1c260d0c3aa9f545e5df6bd34faff372c800c7daca8793ebd5a3c9c9",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "PASS",
+    "note": "彩色隔板前有一个直立的白色圆盖，看到内面和扣边；右上白边附着在挡板。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_111603_00012",
+    "sha256": "36c3f61c8f603e04d3e60382f3bcf2dbe20911adaddea5525581e30dc6d02eef",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "PASS",
+    "note": "扶梯旁三枚矮盖分别为珊瑚红、青色和白色；立着的青盖也能看到内面，无瓶身。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      },
+      {
+        "source_index": 2,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_111632_00028",
+    "sha256": "fbae3d26b45ec03b05195ba34d74f5be1eb56df89fe1a3dd9c9212427cc3d423",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "FAIL",
+    "note": "金属圆柱下的地砖上摊着一份印字折页，数层白边与印刷内页可见。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "金属圆柱下的地砖上摊着一份印字折页，数层白边与印刷内页可见。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_112150_00017",
+    "sha256": "3208dd6aa760013d73265aeb517c0a2707f68cb3b9cc42dd76c8867a05a62c95",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "PASS",
+    "note": "红花纹栏前近处只见单个有外圈浅沟的白色圆盖，完整地面未见目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_112345_00020",
+    "sha256": "bb264f33d31d3720c2ffe1fa06e2311e39d71c172164b4089a1506bd57b26331",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "PASS",
+    "note": "金属柱旁的接缝上有两片棕色带不规则断面的硬壳，没有五类目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_112449_00026",
+    "sha256": "2a1b2417d0c7f6221784a0eebd94ed9061d385ee326e196e43962c281216b404",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "PASS",
+    "note": "黄铜色墙脚旁只有一枚带凹腔的椭圆棕壳，远处地砖和墙边无目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_112552_00012",
+    "sha256": "20a4a234c4767f0be49e241a0648cce9de1804721e6d927c9db02f8e9e6459bd",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "FAIL",
+    "note": "金色墙板前方有浅蓝纸团和一瓣棕色尖边壳，倒影从纸团下方延伸。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "金色墙板前方有浅蓝纸团和一瓣棕色尖边壳，倒影从纸团下方延伸。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_112802_00010",
+    "sha256": "271edff02efab73e650d76174dbca8c2e7c1468d12825f809a5140d009df9081",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "FAIL",
+    "note": "扶梯前的多边形地砖上是一团灰白折纸，破边翻起，远处没有同类目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "扶梯前的多边形地砖上是一团灰白折纸，破边翻起，远处没有同类目标。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_112944_00017",
+    "sha256": "43469a35e6ea492330ec4be7893f0679a151789871daa3e74bd74aa664646a83",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "FAIL",
+    "note": "绿色挡板前一团铺开的白皱纸横跨地砖接缝，多层不透明折边可见。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "绿色挡板前一团铺开的白皱纸横跨地砖接缝，多层不透明折边可见。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_113158_00016",
+    "sha256": "1c999293f2340d3599a40272193f174aa55dc65a5c52c157d073b45ad7145102",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "FAIL",
+    "note": "金色窗框边有粉黄印字的透明薄袋，开口边竖起，计包装物。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "金色窗框边有粉黄印字的透明薄袋，开口边竖起，计包装物。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_113317_00016",
+    "sha256": "93781b0c0a146d09bea457df297845f16d13d3f9395f8d1da64db4511f6c89bf",
+    "source_categories": [
+      "cap"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "PASS",
+    "note": "金属镜面底座前仅有紫、橙两个矮圆盖，镜面中同色形状为反射。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_113448_00015",
+    "sha256": "43ad8dcc1ecf4bdf5f4d0f89b5f9c798472b16b383592345da8d3155e07aa080",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "PASS",
+    "note": "木质墙角外的浅灰多边砖上只见一小块卷起的棕色硬壳，店门在远处。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_113933_00006",
+    "sha256": "0b3f192ba3fc7c85ccbedfc03189c598f394c30cf8b24fc234525523de8b26cd",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "FAIL",
+    "note": "圆柱旁的走廊中有灰白纸团和单个白色浅盖，纸团的翘面与其倒影分开。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "圆柱旁的走廊中有灰白纸团和单个白色浅盖，纸团的翘面与其倒影分开。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_114007_00004",
+    "sha256": "f0ac5fb2923fa1037f8522c5494e6849b74f217ae66543fee15e97d3d00a5f52",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "group": "mall-polygon-atrium",
+    "split": "test",
+    "label": "FAIL",
+    "note": "浅墙前的棕金色纵纹盖和右侧薄白纸分开摆放，白纸一端轻微反卷。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [
+      "bottle_cap"
+    ],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "浅墙前的棕金色纵纹盖和右侧薄白纸分开摆放，白纸一端轻微反卷。"
+      }
+    ],
+    "discarded": [
+      {
+        "source_index": 1,
+        "reason": "目视确认是单独瓶盖，未连瓶身。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_114828_00020",
+    "sha256": "e7865535d4333cabcd049a52703dc2e58da408d035eb2789c370bea36d60d6ce",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "mall-pink-wing",
+    "split": "train",
+    "label": "PASS",
+    "note": "弧形浅色柱脚前有一片深褐细长硬壳；粉色柜下未见其他目标。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_114836_00003",
+    "sha256": "961d6a4a9c553b76cb646c3ce92eb6ead9162b629f7b53e8cd3a4fad9e130ddb",
+    "source_categories": [
+      "shell"
+    ],
+    "group": "mall-pink-wing",
+    "split": "train",
+    "label": "PASS",
+    "note": "粉柜和金属桌脚前，地砖上有两条浅褐弯曲壳片，凸缘及断边可辨。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "background": [
+      "shell"
+    ],
+    "objects": [],
+    "discarded": [
+      {
+        "source_index": 0,
+        "reason": "目视确认是无包装用途的硬壳。"
+      },
+      {
+        "source_index": 1,
+        "reason": "目视确认是无包装用途的硬壳。"
+      }
+    ]
+  },
+  {
+    "original_id": "video_20230201_114918_00016",
+    "sha256": "be29cf2eef5e37b5f14f3d22079f82068575b9f8761029b6d871126c5166ab37",
+    "source_categories": [
+      "paper"
+    ],
+    "group": "mall-pink-wing",
+    "split": "train",
+    "label": "FAIL",
+    "note": "粉绿墙和带轮展柜前的白纸在左侧折成波浪状，薄褶与地砖分开。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 5,
+        "reason": "粉绿墙和带轮展柜前的白纸在左侧折成波浪状，薄褶与地砖分开。"
+      }
+    ],
+    "discarded": []
+  },
+  {
+    "original_id": "video_20230201_114945_00013",
+    "sha256": "5481598d5b41ec1442cc08b7302e878911e0a2021fa632df1ad8592e165bf343",
+    "source_categories": [
+      "plastic"
+    ],
+    "group": "mall-pink-wing",
+    "split": "train",
+    "label": "FAIL",
+    "note": "粉色柜前的绿白塑料膜带印色并有翻起的封边，能辨认为柔性包装。",
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "source_index": 0,
+        "category_id": 3,
+        "reason": "粉色柜前的绿白塑料膜带印色并有翻起的封边，能辨认为柔性包装。"
+      }
+    ],
+    "discarded": []
+  }
+]

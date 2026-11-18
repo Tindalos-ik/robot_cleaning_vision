@@ -1,0 +1,22 @@
+{
+  "title": "Indoor Waste Image Dataset",
+  "version": 1,
+  "published": "2025-01-22",
+  "doi": "10.17632/dy7smxr93r.1",
+  "source_url": "https://data.mendeley.com/datasets/dy7smxr93r/1",
+  "author": "Yangke L",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "archives": {
+    "images": {
+      "filename": "indoor-waste-v1-images.zip",
+      "url": "https://data.mendeley.com/public-files/datasets/dy7smxr93r/files/aed008e5-86af-4d8d-acc0-d74c6cadfac3/file_downloaded",
+      "sha256": "e2be225fdb4d02138ce6a564c89564b273c70e9f4382fd20d4020e70e5ef89fb"
+    },
+    "annotations": {
+      "filename": "indoor-waste-v1-annotations.zip",
+      "url": "https://data.mendeley.com/public-files/datasets/dy7smxr93r/files/48e9801f-ca7a-4a3a-8e2d-fa88e5901734/file_downloaded",
+      "sha256": "0e6a477dee1e147af48a34d286dc031cd8a2eaf4a6199c39907317e4c1660d3f"
+    }
+  }
+}

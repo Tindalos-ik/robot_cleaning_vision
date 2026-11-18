@@ -1,0 +1,14 @@
+{
+  "indoor_reviews_sha256": "733f9a5345a010d3ad86b46c2309979986ec0993166b8037bf9fd827f361dbcb",
+  "indoor_images": 104,
+  "coxpwd_archive_sha256": "777c04c6792fcb17ef5da62e9ffced4b0154269a66813818e3e1857bb384ba93",
+  "coxpwd_reference_images": {
+    "train": 3367,
+    "valid": 414,
+    "test": 414
+  },
+  "phash_max_distance": 10,
+  "dhash_max_distance": 16,
+  "exact_signatures": ["source_sha256", "pixel_sha256"],
+  "flagged_pairs": []
+}

@@ -1,0 +1,1104 @@
+[
+  {
+    "image_id": 2000001763,
+    "original_id": "video_20230201_084627_00029",
+    "file_name": "indoor_waste/video_20230201_084627_00029.jpg",
+    "sha256": "f3c164579b22253b52e7dd64c5ca932b9ce6f143e1b935a6bfec2bca5791af73",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "阳光照进玻璃窗的石地面上，单个橙红盖凹口朝上，周边无瓶身或五类目标。"
+  },
+  {
+    "image_id": 2000001771,
+    "original_id": "video_20230201_084708_00045",
+    "file_name": "indoor_waste/video_20230201_084708_00045.jpg",
+    "sha256": "c8decafdce38d0435aa73ae2cb25d1140e3ebc52e8453e5e064848d0af4fc4dc",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "灰墙前花岗岩上的粉色圆盖侧面有细竖纹，四角和墙脚未见目标。"
+  },
+  {
+    "image_id": 2000001783,
+    "original_id": "video_20230201_084913_00024",
+    "file_name": "indoor_waste/video_20230201_084913_00024.jpg",
+    "sha256": "3a92bcdca2ba27c4ddc0cd8893ceac5fc99d477bf4da97ff51d3e1009811321f",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "玻璃扶梯厅中，地上的白色大皱纸摊开，一侧有翻卷薄纸边。"
+  },
+  {
+    "image_id": 2000001789,
+    "original_id": "video_20230201_084934_00022",
+    "file_name": "indoor_waste/video_20230201_084934_00022.jpg",
+    "sha256": "0fbec1966bbd01b2683167df9f80e0b97e88dacefc20e8e64256a3adc6501914",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "扶梯与斜阳交界处只有一个黄绿色短圆盖，盖面可见浅色纹点。"
+  },
+  {
+    "image_id": 2000001794,
+    "original_id": "video_20230201_084958_00024",
+    "file_name": "indoor_waste/video_20230201_084958_00024.jpg",
+    "sha256": "5a5cbad1d177d0607de8640f2c6498cd043a4b59dc096b6bd672fd5ff5e7581e",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "金属栏杆前的白皱纸斜立在地缝边，折边翘起并投下阴影。"
+  },
+  {
+    "image_id": 2000001801,
+    "original_id": "video_20230201_085135_00006",
+    "file_name": "indoor_waste/video_20230201_085135_00006.jpg",
+    "sha256": "5ddc49466d0a98dbf40039cb7126a5f35f24f6aeac5f0557ef36e96c0008bde5",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "FAIL",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "靠方柱前方左边是独立白色薄皱纸，右边是带裂口的浅棕硬壳。"
+  },
+  {
+    "image_id": 2000001816,
+    "original_id": "video_20230201_085244_00010",
+    "file_name": "indoor_waste/video_20230201_085244_00010.jpg",
+    "sha256": "0d5f8cccba67a06c2ff4e541b9ac9ced832609758e90b1ea7134bd8663d3dcc0",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "带格纹的斜坡地板上有一团白皱纸，距离玻璃栏较近，边缘不透明。"
+  },
+  {
+    "image_id": 2000001829,
+    "original_id": "video_20230201_085526_00056",
+    "file_name": "indoor_waste/video_20230201_085526_00056.jpg",
+    "sha256": "f9a257967173fae0305bfc7ba1048fb43e570927cb77ba958031eae9937de20b",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "FAIL",
+    "source_categories": [
+      "plastic"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "花岗岩台阶底下的黄黑薄片有印刷和包装封边，翘面下是阴影。"
+  },
+  {
+    "image_id": 2000001835,
+    "original_id": "video_20230201_085622_00030",
+    "file_name": "indoor_waste/video_20230201_085622_00030.jpg",
+    "sha256": "38403d249fffbfd73987777d76bdec67c29deadbcac9b8b95f7bf8ec2d382868",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "台阶下的黄粉色皱片带印刷，薄亮包装边翻起，计包装物。"
+  },
+  {
+    "image_id": 2000001844,
+    "original_id": "video_20230201_085835_00014",
+    "file_name": "indoor_waste/video_20230201_085835_00014.jpg",
+    "sha256": "9058c01865eab4af91364d1550ce9cdbe43922da7b9e86c559ab5338dadcefba",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "红色台阶标贴旁仅有一个内凹的紫色浅盖，玻璃扶手和整个地面无其他目标。"
+  },
+  {
+    "image_id": 2000001876,
+    "original_id": "video_20230201_090340_00030",
+    "file_name": "indoor_waste/video_20230201_090340_00030.jpg",
+    "sha256": "0e8b10591fc0520f4d44f24f073353c0931e9db9f04fc1118916b10bfae997d2",
+    "group_id": "supplemental:indoor_waste:station-metal-entry",
+    "label": "PASS",
+    "source_categories": [
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "白墙及黑色墙脚交界前的石地砖缝上，有一瓣浅色硬壳翻面，未见目标。"
+  },
+  {
+    "image_id": 2000001904,
+    "original_id": "video_20230201_090719_00033",
+    "file_name": "indoor_waste/video_20230201_090719_00033.jpg",
+    "sha256": "2bcfe255285af7c7d4961d99566504343c243280b59aeb589a96ab2b4d7fdb0e",
+    "group_id": "supplemental:indoor_waste:station-metal-entry",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "金属门前灰石地面只有一个顶上带绿印的白色圆盖，短侧壁与瓶身分开。"
+  },
+  {
+    "image_id": 2000001914,
+    "original_id": "video_20230201_090837_00020",
+    "file_name": "indoor_waste/video_20230201_090837_00020.jpg",
+    "sha256": "16613bbc39be45c58cdb8a912be798b9408eac80ee7d9d6459cf62df0d9a10db",
+    "group_id": "supplemental:indoor_waste:station-metal-entry",
+    "label": "FAIL",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "清洁告示牌前有竖起薄皱边的白纸及平放的红色矮盖，计白纸。"
+  },
+  {
+    "image_id": 2000001920,
+    "original_id": "video_20230201_090928_00017",
+    "file_name": "indoor_waste/video_20230201_090928_00017.jpg",
+    "sha256": "744fedc8899265a1bf593ee6d2fb3495b1dc9e1327410207f05c5202093ab719",
+    "group_id": "supplemental:indoor_waste:station-metal-entry",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "不锈钢收边前的灰石面上，单个黄橙浅盖平放，没有瓶身或散落目标。"
+  },
+  {
+    "image_id": 2000001950,
+    "original_id": "video_20230201_091202_00020",
+    "file_name": "indoor_waste/video_20230201_091202_00020.jpg",
+    "sha256": "9cdb87ee85a8e432dc88d3661a437fe95f0fc9ee67e16e0ad487c15f192744d8",
+    "group_id": "supplemental:indoor_waste:station-metal-entry",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "橙色灯牌旁，金属条板前的白色纸片一端竖起，其余贴地展开。"
+  },
+  {
+    "image_id": 2000001963,
+    "original_id": "video_20230201_091402_00016",
+    "file_name": "indoor_waste/video_20230201_091402_00016.jpg",
+    "sha256": "f9112249a6c7dd057738263372ba8c4e71bbd2dd122fdd07861fdd1fc0822427",
+    "group_id": "supplemental:indoor_waste:station-metal-entry",
+    "label": "FAIL",
+    "source_categories": [
+      "plastic"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "长条挡板前是黄面银底的印刷柔性包装，皱折的封口竖起。"
+  },
+  {
+    "image_id": 2000001973,
+    "original_id": "video_20230201_091532_00019",
+    "file_name": "indoor_waste/video_20230201_091532_00019.jpg",
+    "sha256": "7ce693c9180181c0955e0c9fd621171266321cc1a56b704b3ae54af75baaa817",
+    "group_id": "supplemental:indoor_waste:station-metal-entry",
+    "label": "FAIL",
+    "source_categories": [
+      "paper",
+      "plastic"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "防滑沟槽中有银亮封边的包装和独立的哑光白纸团，二者各计一个。"
+  },
+  {
+    "image_id": 2000001980,
+    "original_id": "video_20230201_091625_00010",
+    "file_name": "indoor_waste/video_20230201_091625_00010.jpg",
+    "sha256": "dcce74f197c7be8b92866532fe08b99129643fc7413227832ede27e735684c93",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 2
+    },
+    "review_note": "闸机前石面上有一条长皱纸和一个稍小白色折片，两件之间有空隙。"
+  },
+  {
+    "image_id": 2000001998,
+    "original_id": "video_20230201_091728_00028",
+    "file_name": "indoor_waste/video_20230201_091728_00028.jpg",
+    "sha256": "112c533da203ee6423e1df1628c0f5cec4f3cfe4681bc2ce2edfee62474e7a64",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "玻璃门与橙色门框前的条纹石地板上，一团白折纸贴着一条亮光反射。"
+  },
+  {
+    "image_id": 2000002060,
+    "original_id": "video_20230201_092252_00024",
+    "file_name": "indoor_waste/video_20230201_092252_00024.jpg",
+    "sha256": "a1ce91d1a2664796c0ff7f758c22c9d4f3a2276563e805d87d495c826d99d73e",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "FAIL",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "售票机下方地面有一片浅色弧壳和一片细长硬壳，右边另有一团折纸。"
+  },
+  {
+    "image_id": 2000002069,
+    "original_id": "video_20230201_092343_00022",
+    "file_name": "indoor_waste/video_20230201_092343_00022.jpg",
+    "sha256": "c7f4b1c81909bd1acf86a3c9752c1b2b1528ddafca24cedb99d1ee2f99a82455",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "PASS",
+    "source_categories": [
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "蓝色立架底座前散有三瓣浅褐薄壳，光滑外侧和断口可分辨，周边无目标。"
+  },
+  {
+    "image_id": 2000002119,
+    "original_id": "video_20230201_092800_00034",
+    "file_name": "indoor_waste/video_20230201_092800_00034.jpg",
+    "sha256": "301f0a79a9ec16ac3e65c934cdda99a8b7a3e54d167c9a87d18203d775cd59fc",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "白色立架脚附近的地面上有一小团皱白纸，一侧竖起且没有类似容器的轮廓。"
+  },
+  {
+    "image_id": 2000002148,
+    "original_id": "video_20230201_092943_00042",
+    "file_name": "indoor_waste/video_20230201_092943_00042.jpg",
+    "sha256": "a4421de55c8baf670665522f8bd3bab9efa8f6e6a63ff68ccb9208603fc3295b",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "大厅有橙柱与青柜，近处灰白薄纸揉过后摊开，边沿独立于石面反光。"
+  },
+  {
+    "image_id": 2000002163,
+    "original_id": "video_20230201_093121_00043",
+    "file_name": "indoor_waste/video_20230201_093121_00043.jpg",
+    "sha256": "bd805276749efcea66d4c42b5790b4887bd7cf6c2a5bb813236b9909febeaae2",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "PASS",
+    "source_categories": [
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "黑色墙脚前的单个棕色裂壳有明显凹面和弯边，四周地面为空。"
+  },
+  {
+    "image_id": 2000002189,
+    "original_id": "video_20230201_093408_00024",
+    "file_name": "indoor_waste/video_20230201_093408_00024.jpg",
+    "sha256": "a02a298e21f6866acdcb02545635d082ec6bca52d4a89d798a6b7c61e159f642",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "PASS",
+    "source_categories": [
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "青色柜台前的石砖上可见四枚深浅不同的裂边硬壳，柜台反光未遮住其他目标。"
+  },
+  {
+    "image_id": 2000002208,
+    "original_id": "video_20230201_093610_00016",
+    "file_name": "indoor_waste/video_20230201_093610_00016.jpg",
+    "sha256": "26b296987c020f77e893550e0c0c21864ed3213101c2b478f262cba0c9e9c0f0",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "FAIL",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "闸机通道边三块带凹口壳片之间有白灰色皱纸，计纸一件。"
+  },
+  {
+    "image_id": 2000002235,
+    "original_id": "video_20230201_093903_00029",
+    "file_name": "indoor_waste/video_20230201_093903_00029.jpg",
+    "sha256": "8cbbff097167890ba193172d89302ddf80cdafcabf04b077ce485a48622d4a72",
+    "group_id": "supplemental:indoor_waste:station-gate-hall",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "黑色墙脚前地面仅有红边白面的矮盖，顶面无开口瓶身。"
+  },
+  {
+    "image_id": 2000002247,
+    "original_id": "video_20230201_094005_00040",
+    "file_name": "indoor_waste/video_20230201_094005_00040.jpg",
+    "sha256": "c14bab0bd415b92e5990c784da25358533c49c2566fd371312e5e06dc8a3be35",
+    "group_id": "supplemental:indoor_waste:station-granite-corridor",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "黑色长墙脚前，斑点地面中央是一片摊开的白皱纸，几处折边与石纹可分辨。"
+  },
+  {
+    "image_id": 2000002322,
+    "original_id": "video_20230201_094533_00019",
+    "file_name": "indoor_waste/video_20230201_094533_00019.jpg",
+    "sha256": "8a4481f2e0ef01c188196a311863e7edfe7521d47e404b7ecf424e7ac52c56fc",
+    "group_id": "supplemental:indoor_waste:station-granite-corridor",
+    "label": "FAIL",
+    "source_categories": [
+      "plastic"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 2,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "白墙过道上有一件紫色印刷封边膜和一件亮银色揉皱包膜，两件均可辨。"
+  },
+  {
+    "image_id": 2000002353,
+    "original_id": "video_20230201_094827_00028",
+    "file_name": "indoor_waste/video_20230201_094827_00028.jpg",
+    "sha256": "7bfcd8f9cc5a564090047d1c154f935f5fd92666881275b36ac017b2ff280587",
+    "group_id": "supplemental:indoor_waste:station-granite-corridor",
+    "label": "FAIL",
+    "source_categories": [
+      "plastic"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "圆形绿色地标前有一团红色金属光泽的薄包装膜，折口向上。"
+  },
+  {
+    "image_id": 2000002465,
+    "original_id": "video_20230201_095239_00019",
+    "file_name": "indoor_waste/video_20230201_095239_00019.jpg",
+    "sha256": "876214d60716eec9fa0b642feabea712f3f0e56bf70f4cbd1ff7cf16440a589b",
+    "group_id": "supplemental:indoor_waste:station-granite-corridor",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "黑色金属墙脚边有一团白纸，翘起的褶皱和靠地边均可见。"
+  },
+  {
+    "image_id": 2000002541,
+    "original_id": "video_20230201_095720_00051",
+    "file_name": "indoor_waste/video_20230201_095720_00051.jpg",
+    "sha256": "adb2330fffa3b4d9385cfe3c449e8a6bb10ac545c2bda22f17a5693699eede19",
+    "group_id": "supplemental:indoor_waste:station-granite-corridor",
+    "label": "FAIL",
+    "source_categories": [
+      "plastic"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "白墙前是带深青色印色的金属光泽薄膜，左右扭卷的边缘符合柔性包装。"
+  },
+  {
+    "image_id": 2000002781,
+    "original_id": "video_20230201_101137_00025",
+    "file_name": "indoor_waste/video_20230201_101137_00025.jpg",
+    "sha256": "4c7fa1ef2d3c60d815ed32f2b41cc68656f08f48024e00ed70323709d3dd8dce",
+    "group_id": "supplemental:indoor_waste:station-granite-corridor",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "灰石地面上只有一个透白敞口浅盖，短圆壁独立于白墙的黑色底边。"
+  },
+  {
+    "image_id": 2000002803,
+    "original_id": "video_20230201_101423_00023",
+    "file_name": "indoor_waste/video_20230201_101423_00023.jpg",
+    "sha256": "2e0eb7076b484692121979f73969af931a53eeb74c44c92565c5588147ca5581",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "有上行箭头的楼梯旁，一团棕色纸折起数层，薄直边可见。"
+  },
+  {
+    "image_id": 2000002836,
+    "original_id": "video_20230201_101708_00032",
+    "file_name": "indoor_waste/video_20230201_101708_00032.jpg",
+    "sha256": "c0965fb4e76a4465eb276cdf7680371038aa569b60cba2e5250ee8b6000e895c",
+    "group_id": "supplemental:indoor_waste:station-glazed-stair",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "落地玻璃和扶梯之前有一条狭长白纸，一边竖卷，另一边贴在粗石面缝上。"
+  },
+  {
+    "image_id": 2000003453,
+    "original_id": "video_20230201_110542_00013",
+    "file_name": "indoor_waste/video_20230201_110542_00013.jpg",
+    "sha256": "a82cee9368a4e8d7c44ea80310c86998a3331a555a5bd8b0c84928b45d23d0b8",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "深灰多边形地砖近处是不透明白纸团，两边翘起，固定设备底沿无散落目标。"
+  },
+  {
+    "image_id": 2000003459,
+    "original_id": "video_20230201_110554_00010",
+    "file_name": "indoor_waste/video_20230201_110554_00010.jpg",
+    "sha256": "8e01b31b55d13ab6b9ffc0742781a1065d631417082b575e543b58dcde74f798",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "绿图案玻璃栏前的深灰地砖上，只有一个内壁可见的黄绿浅盖，没有瓶身。"
+  },
+  {
+    "image_id": 2000003523,
+    "original_id": "video_20230201_111025_00015",
+    "file_name": "indoor_waste/video_20230201_111025_00015.jpg",
+    "sha256": "36bd7e933aedbdf949cc0ccb2de5c8a2403575181515257fc46155bdf7fb319d",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "白墙与长凳前的地面上，白纸小片竖起一角并投下贴地阴影。"
+  },
+  {
+    "image_id": 2000003607,
+    "original_id": "video_20230201_111519_00022",
+    "file_name": "indoor_waste/video_20230201_111519_00022.jpg",
+    "sha256": "074bd9cd1c260d0c3aa9f545e5df6bd34faff372c800c7daca8793ebd5a3c9c9",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "彩色隔板前有一个直立的白色圆盖，看到内面和扣边；右上白边附着在挡板。"
+  },
+  {
+    "image_id": 2000003612,
+    "original_id": "video_20230201_111603_00012",
+    "file_name": "indoor_waste/video_20230201_111603_00012.jpg",
+    "sha256": "36c3f61c8f603e04d3e60382f3bcf2dbe20911adaddea5525581e30dc6d02eef",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "扶梯旁三枚矮盖分别为珊瑚红、青色和白色；立着的青盖也能看到内面，无瓶身。"
+  },
+  {
+    "image_id": 2000003630,
+    "original_id": "video_20230201_111632_00028",
+    "file_name": "indoor_waste/video_20230201_111632_00028.jpg",
+    "sha256": "fbae3d26b45ec03b05195ba34d74f5be1eb56df89fe1a3dd9c9212427cc3d423",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "金属圆柱下的地砖上摊着一份印字折页，数层白边与印刷内页可见。"
+  },
+  {
+    "image_id": 2000003676,
+    "original_id": "video_20230201_112150_00017",
+    "file_name": "indoor_waste/video_20230201_112150_00017.jpg",
+    "sha256": "3208dd6aa760013d73265aeb517c0a2707f68cb3b9cc42dd76c8867a05a62c95",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "红花纹栏前近处只见单个有外圈浅沟的白色圆盖，完整地面未见目标。"
+  },
+  {
+    "image_id": 2000003708,
+    "original_id": "video_20230201_112345_00020",
+    "file_name": "indoor_waste/video_20230201_112345_00020.jpg",
+    "sha256": "bb264f33d31d3720c2ffe1fa06e2311e39d71c172164b4089a1506bd57b26331",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "PASS",
+    "source_categories": [
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "金属柱旁的接缝上有两片棕色带不规则断面的硬壳，没有五类目标。"
+  },
+  {
+    "image_id": 2000003737,
+    "original_id": "video_20230201_112449_00026",
+    "file_name": "indoor_waste/video_20230201_112449_00026.jpg",
+    "sha256": "2a1b2417d0c7f6221784a0eebd94ed9061d385ee326e196e43962c281216b404",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "PASS",
+    "source_categories": [
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "黄铜色墙脚旁只有一枚带凹腔的椭圆棕壳，远处地砖和墙边无目标。"
+  },
+  {
+    "image_id": 2000003749,
+    "original_id": "video_20230201_112552_00012",
+    "file_name": "indoor_waste/video_20230201_112552_00012.jpg",
+    "sha256": "20a4a234c4767f0be49e241a0648cce9de1804721e6d927c9db02f8e9e6459bd",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "FAIL",
+    "source_categories": [
+      "paper",
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "金色墙板前方有浅蓝纸团和一瓣棕色尖边壳，倒影从纸团下方延伸。"
+  },
+  {
+    "image_id": 2000003760,
+    "original_id": "video_20230201_112802_00010",
+    "file_name": "indoor_waste/video_20230201_112802_00010.jpg",
+    "sha256": "271edff02efab73e650d76174dbca8c2e7c1468d12825f809a5140d009df9081",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "扶梯前的多边形地砖上是一团灰白折纸，破边翻起，远处没有同类目标。"
+  },
+  {
+    "image_id": 2000003782,
+    "original_id": "video_20230201_112944_00017",
+    "file_name": "indoor_waste/video_20230201_112944_00017.jpg",
+    "sha256": "43469a35e6ea492330ec4be7893f0679a151789871daa3e74bd74aa664646a83",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "FAIL",
+    "source_categories": [
+      "paper"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "绿色挡板前一团铺开的白皱纸横跨地砖接缝，多层不透明折边可见。"
+  },
+  {
+    "image_id": 2000003801,
+    "original_id": "video_20230201_113158_00016",
+    "file_name": "indoor_waste/video_20230201_113158_00016.jpg",
+    "sha256": "1c999293f2340d3599a40272193f174aa55dc65a5c52c157d073b45ad7145102",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "FAIL",
+    "source_categories": [
+      "plastic"
+    ],
+    "background": [],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "金色窗框边有粉黄印字的透明薄袋，开口边竖起，计包装物。"
+  },
+  {
+    "image_id": 2000003825,
+    "original_id": "video_20230201_113317_00016",
+    "file_name": "indoor_waste/video_20230201_113317_00016.jpg",
+    "sha256": "93781b0c0a146d09bea457df297845f16d13d3f9395f8d1da64db4511f6c89bf",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "PASS",
+    "source_categories": [
+      "cap"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "金属镜面底座前仅有紫、橙两个矮圆盖，镜面中同色形状为反射。"
+  },
+  {
+    "image_id": 2000003856,
+    "original_id": "video_20230201_113448_00015",
+    "file_name": "indoor_waste/video_20230201_113448_00015.jpg",
+    "sha256": "43ad8dcc1ecf4bdf5f4d0f89b5f9c798472b16b383592345da8d3155e07aa080",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "PASS",
+    "source_categories": [
+      "shell"
+    ],
+    "background": [
+      "shell"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "review_note": "木质墙角外的浅灰多边砖上只见一小块卷起的棕色硬壳，店门在远处。"
+  },
+  {
+    "image_id": 2000003888,
+    "original_id": "video_20230201_113933_00006",
+    "file_name": "indoor_waste/video_20230201_113933_00006.jpg",
+    "sha256": "0b3f192ba3fc7c85ccbedfc03189c598f394c30cf8b24fc234525523de8b26cd",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "FAIL",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "圆柱旁的走廊中有灰白纸团和单个白色浅盖，纸团的翘面与其倒影分开。"
+  },
+  {
+    "image_id": 2000003901,
+    "original_id": "video_20230201_114007_00004",
+    "file_name": "indoor_waste/video_20230201_114007_00004.jpg",
+    "sha256": "f0ac5fb2923fa1037f8522c5494e6849b74f217ae66543fee15e97d3d00a5f52",
+    "group_id": "supplemental:indoor_waste:mall-polygon-atrium",
+    "label": "FAIL",
+    "source_categories": [
+      "cap",
+      "paper"
+    ],
+    "background": [
+      "bottle_cap"
+    ],
+    "counts": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1
+    },
+    "review_note": "浅墙前的棕金色纵纹盖和右侧薄白纸分开摆放，白纸一端轻微反卷。"
+  }
+]
