@@ -26,8 +26,8 @@ uv run --locked python -m dataprocessing.supplemental --restore-images
 
 ## 启动训练
 
-方法一使用的本地 JPG 和逐图 JSON 保存在 `data/raw/supplemental/local_training/训练集/`，需从用户原件准备。训练命令见[手工特征 + MLP](../docs/手工特征+MLP.md#4-重新训练)。
-方法二准备好下节室内数据后运行：
+本地 JPG 和逐图 JSON 保存在 `data/raw/supplemental/local_training/训练集/`，需从用户原件准备。方法一训练命令见[手工特征 + MLP](../docs/手工特征+MLP.md#4-重新训练)。
+方法二还需准备下节室内数据，并按 [本地审核清单](../data/processed/supplemental/local_training_annotations_project.json) 的 `file_name` 提供全部 195 张本地原图。准备完成后运行：
 
 ```bash
 uv run --locked python -m robot_cleaning_vision.models.cnn_linear.train
@@ -35,9 +35,8 @@ uv run --locked python -m robot_cleaning_vision.models.cnn_linear.train
 
 MLP 的 `--check-data` 只提取特征并打印数据统计。指定补充来源时检查所选补充图；未指定时检查 TACO train。正式训练在 `artifacts/mlp/training/` 新建目录，不覆盖默认权重。
 
-CNN 使用 `all-plus-indoor` 数据组合、384×384 输入与 `C=0.001`。
-每次仅保存新权重 `artifacts/cnn_linear/training/<新目录>/model.pt`，验证结果打印到终端，
-不覆盖 `artifacts/cnn_linear/model.pt`。首次特征提取需要 torchvision 官方 ResNet-50 权重。
+方法二复训使用 TACO train、CoxPWD、Wikimedia、Indoor Waste train 和本地审核实拍图，共 999 张。
+首次特征提取需要 torchvision 官方 ResNet-50 权重。每次只保存新权重 `artifacts/cnn_linear/training/<新目录>/model.pt`，终端报告 TACO val 的校准阈值和评估指标，默认权重保持不变。
 详细流程见[冻结 CNN + 线性分类器](../docs/冻结CNN+线性分类器.md)。
 
 ## Indoor Waste v1：CNN 训练数据
@@ -54,8 +53,7 @@ uv run --locked python -m dataprocessing.supplemental.indoor --restore-images
 
 维护审核清单时使用 [Indoor 类别规则](supplemental/mapping.py)。逐图检查全幅与小物体，合并已识别的同场景、连拍和近重复；每段视频最多一帧。`source_index` 是该图 LabelMe `shapes` 数组零基索引。每个原框须有保留或排除决定。新增或修正框用显示像素 `[x, y, w, h]`；新增时 `source_index` 为 `null`。五类目标数量为零才记 PASS。独立瓶盖、果壳和种壳记背景；散纸计纸类、纸杯计杯、柔性包装纸计包装物，`plastic` 逐件确认。将官方背景框改判为目标时，写明理由及 `override: true`。
 
-CNN 只追加 Indoor Waste 的 train 分区。冻结的室内 test、原 TACO val/test 和本地实测图片均不加入训练；
-阈值仅由原 TACO val 确定。
+CNN 从 Indoor Waste 和本地审核清单各自只取 train 分区。冻结的室内 test 与原 TACO val/test 不加入训练；阈值仅由原 TACO val 确定。
 
 试用新训练权重时，将下例路径替换为训练命令打印的实际路径：
 

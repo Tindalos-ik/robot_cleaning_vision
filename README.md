@@ -60,7 +60,7 @@ JSON 还可来自外部模型，须使用 UTF-8 并包含 `model_name` 和 `task
 uv run --locked python -m robot_cleaning_vision.models.cnn_linear.train
 ```
 
-新权重不会覆盖默认权重。试用时用 `run --model-path` 指定新生成的 `model.pt`。
+方法二仅用 TACO 验证集校准阈值并报告验证指标，新权重不会覆盖默认权重。试用时用 `run --model-path` 指定新生成的 `model.pt`。
 
 ## 开发文档
 

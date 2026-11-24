@@ -19,9 +19,9 @@ DEFAULT_MODEL_PATH = ARTIFACT_ROOT / "model.pt"
 CHECKPOINT_KIND = "resnet50-logistic-regression-v1"
 WEIGHTS = ResNet50_Weights.IMAGENET1K_V2
 LABELS = {"PASS": 0, "FAIL": 1}
-PREPROCESSING = {
+SUPPORTED_INPUT_SIZES = (384, 512)
+_PREPROCESSING = {
     "resize": "bilinear_center_letterbox",
-    "target_size": (384, 384),
     "fill": (124, 116, 104),
     "color": "RGB",
     "dtype": "float32",
@@ -39,8 +39,11 @@ def compute_device() -> torch.device:
 class FeatureExtractor:
     """只读取全局平均池化后的 2048 维特征，固定参数和 BatchNorm 状态。"""
 
-    def __init__(self, backbone: nn.Module, device: torch.device) -> None:
-        """冻结 backbone，在 device 上以推理模式提取整图特征。"""
+    def __init__(self, backbone: nn.Module, device: torch.device, *, input_size: int) -> None:
+        """冻结 backbone，在 device 上使用 input_size×input_size 预处理提取整图特征。"""
+        if input_size not in SUPPORTED_INPUT_SIZES:
+            raise ValueError(f"不支持的 baseline2 输入尺寸：{input_size}")
+        self.preprocessing = {**_PREPROCESSING, "target_size": (input_size, input_size)}
         if device.type == "cuda":
             # 统一单图与批量卷积的计算精度，避免 TF32 的分数偏差。
             torch.backends.cudnn.conv.fp32_precision = "ieee"
@@ -48,16 +51,16 @@ class FeatureExtractor:
         self.device = device
 
     @classmethod
-    def pretrained(cls, device: torch.device) -> "FeatureExtractor":
-        """在 device 上加载官方 V2 权重并移除原分类层。"""
+    def pretrained(cls, device: torch.device, *, input_size: int) -> "FeatureExtractor":
+        """在 device 上载入官方 V2 骨干，移除原分类层并使用 input_size 方形输入。"""
         backbone = resnet50(weights=WEIGHTS)
         backbone.fc = nn.Identity()
-        return cls(backbone, device)
+        return cls(backbone, device, input_size=input_size)
 
     @torch.inference_mode()
     def extract(self, images: Iterable[Image.Image | BGRFrame]) -> np.ndarray:
         """将 images 中已转正的 PIL RGB 图或 OpenCV BGR 帧转换为 2048 维特征。"""
-        config = PREPROCESSING
+        config = self.preprocessing
         batch = np.stack([
             preprocess(
                 image, target_size=config["target_size"], fill=config["fill"],
@@ -106,18 +109,22 @@ class CNNLinearModel:
 
     @classmethod
     def load(cls, path: Path | None = None) -> "CNNLinearModel":
-        """从 path 离线加载权重；省略时使用项目保留的 384 模型。"""
+        """从 path 离线加载包含输入尺寸的权重；省略 path 时加载默认部署权重。"""
         path = (DEFAULT_MODEL_PATH if path is None else Path(path)).resolve()
         saved = torch.load(path, map_location="cpu", weights_only=True)
+        preprocessing = saved["preprocessing"]
+        height, width = preprocessing["target_size"]
         if (saved["kind"] != CHECKPOINT_KIND or saved["pretrained_weights"] != WEIGHTS.name
-                or saved["preprocessing"] != PREPROCESSING or saved["labels"] != LABELS):
+                or height != width or height not in SUPPORTED_INPUT_SIZES
+                or preprocessing != {**_PREPROCESSING, "target_size": (height, width)}
+                or saved["labels"] != LABELS):
             raise ValueError(f"不兼容的 baseline2 模型文件：{path}")
         with torch.device("meta"):
             backbone = resnet50(weights=None)
             backbone.fc = nn.Identity()
         backbone.load_state_dict(saved["backbone"], assign=True)
         return cls(
-            FeatureExtractor(backbone, compute_device()), LinearHead(**saved["linear_head"]),
+            FeatureExtractor(backbone, compute_device(), input_size=height), LinearHead(**saved["linear_head"]),
             saved["threshold"], path,
         )
 
@@ -127,7 +134,7 @@ class CNNLinearModel:
             torch.save({
                 "kind": CHECKPOINT_KIND,
                 "pretrained_weights": WEIGHTS.name,
-                "preprocessing": PREPROCESSING,
+                "preprocessing": self.extractor.preprocessing,
                 "labels": LABELS,
                 "threshold": self.threshold,
                 "backbone": self.extractor.backbone.state_dict(),
