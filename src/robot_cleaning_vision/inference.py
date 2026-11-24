@@ -13,7 +13,7 @@ from PIL import Image, ImageOps
 import numpy as np
 
 from .capture.camera import BGRFrame, Camera
-from .models.mlp.model import DEFAULT_MODEL_PATH, MLPModel
+from .models.mlp.model import DEFAULT_MODEL_PATH, DEPLOYMENT_THRESHOLD, MLPModel
 from .postprocessing import ImageResult, postprocess_classification
 from .visualization import ResultRenderer
 
@@ -166,7 +166,8 @@ def run(
     """
     if model_id == "baseline1":
         model = MLPModel.load(model_path if model_path is not None else DEFAULT_MODEL_PATH)
-        model.threshold = 0.5  # 保留 baseline1 实测入口使用的阈值。
+        # baseline1 的部署规则固定，旧权重文件中的校准阈值不参与 CLI 判定。
+        model.threshold = DEPLOYMENT_THRESHOLD
     elif model_id == "baseline2":
         from .models.cnn_linear.model import CNNLinearModel
 

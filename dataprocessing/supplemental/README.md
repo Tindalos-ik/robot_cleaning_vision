@@ -32,4 +32,4 @@ uv run --locked python -m dataprocessing.supplemental.indoor --restore-images
 
 ## 维护清单
 
-[`mapping.py`](mapping.py) 定义外部类别到项目五类的映射。三个 `*_reviews.json` 保存逐图决定、场景组、标签及目标框的保留或修正依据。更新数据时先改相应审核清单，再运行转换。模型训练使用 183 张补充训练图；52 张室内留出图单独用于评估。用法和审核字段见[数据准备与训练](../README.md)。
+[`mapping.py`](mapping.py) 定义外部类别到项目五类的映射。三个 `*_reviews.json` 保存逐图决定、场景组、标签及目标框的保留或修正依据。更新数据时先改相应审核清单，再运行转换。CNN 使用 183 张公开补充训练图；52 张室内留出图单独评估。MLP 的训练图和本地图片根目录见[方法一指南](../../docs/手工特征+MLP.md#4-重新训练)。审核字段见[数据准备与训练](../README.md)。

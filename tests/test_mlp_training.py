@@ -1,13 +1,14 @@
-"""检查背景采样、训练集标准化和验证阈值的实际数值行为。"""
+"""检查区域采样、训练集标准化和 FAIL 损失加权。"""
 
 import contextlib
 import io
 import unittest
 
 import numpy as np
+import torch
 
 from robot_cleaning_vision.models.mlp.training import (
-    _fit_network, _training_patches, choose_threshold,
+    _fit_network, _training_patches,
 )
 
 
@@ -41,13 +42,19 @@ class TrainingTests(unittest.TestCase):
         np.testing.assert_array_equal(mean, [0, 4])
         np.testing.assert_allclose(scale, [np.sqrt(2.5), 1])
 
-    def test_threshold_preserves_recall_and_uses_gap_between_classes(self):
-        labels = np.array([0, 0, 1, 1])
-        probabilities = np.array([0.1, 0.2, 0.3, 0.4], dtype=np.float32)
-        threshold = choose_threshold(labels, probabilities, minimum_recall=1.0)
-        self.assertGreater(threshold, probabilities[1])
-        self.assertLess(threshold, probabilities[2])
-        np.testing.assert_array_equal(probabilities >= threshold, labels)
+    def test_fail_loss_weight_changes_scores(self):
+        """同一特征对应两类时，最优分数等于该类在损失中的权重占比。"""
+        features = np.zeros((2, 1), dtype=np.float32)
+        labels = np.array([0, 1])
+        config = {'epochs': 70, 'batch_size': 2, 'learning_rate': 0.06, 'weight_decay': 0.0}
+        scores = []
+        with contextlib.redirect_stdout(io.StringIO()):
+            for weight in (1.0, 3.0):
+                network, *_ = _fit_network(features, labels, np.ones(2), 1,
+                                           dict(config, fail_weight=weight), 42)
+                with torch.inference_mode():
+                    scores.append(network(torch.from_numpy(features[:1])).sigmoid().item())
+        np.testing.assert_allclose(scores, [0.5, 0.75], atol=0.01)
 
 
 if __name__ == '__main__':

@@ -54,10 +54,9 @@ JSON 还可来自外部模型，须使用 UTF-8 并包含 `model_name` 和 `task
 
 ## 训练
 
-先按[数据准备指南](dataprocessing/README.md)准备对应模型的数据，再运行：
+先按[数据准备指南](dataprocessing/README.md)准备数据。方法一的正式训练命令见[手工特征 + MLP](docs/手工特征+MLP.md#4-重新训练)；方法二运行：
 
 ```bash
-uv run --locked python -m robot_cleaning_vision.models.mlp.train
 uv run --locked python -m robot_cleaning_vision.models.cnn_linear.train
 ```
 

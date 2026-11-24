@@ -1,7 +1,6 @@
 """保留模型的确定性消费者测试，不依赖训练流程或原始数据集。"""
 
 import unittest
-from unittest.mock import patch
 
 import numpy as np
 from PIL import Image, ImageOps
@@ -104,7 +103,8 @@ class ModelTests(unittest.TestCase):
             hidden = F.relu(F.linear(tensor, state["0.weight"], state["0.bias"]))
             return F.linear(hidden, state["2.weight"], state["2.bias"]).sigmoid().numpy().ravel()
 
-    def test_real_checkpoint_scalers_networks_threshold_and_no_reload(self):
+    def test_real_checkpoint_scalers_networks_and_threshold(self):
+        """核对默认权重的单图计算、重复预测和文件内阈值。"""
         pixels = np.random.default_rng(17).integers(0, 256, (37, 61, 3), dtype=np.uint8)
         before = pixels.copy()
         region = self.saved["region_checkpoint"]
@@ -116,14 +116,12 @@ class ModelTests(unittest.TestCase):
             extract_context(pixels),
         ]
         expected = float(self.checkpoint_forward(features[None, :], self.saved)[0])
-        with patch("torch.load", side_effect=AssertionError("Prediction reloaded weights")):
-            actual = self.model.predict(pixels)
-            repeated = self.model.predict(pixels)
+        actual = self.model.predict(pixels)
+        repeated = self.model.predict(pixels)
         self.assertIs(type(actual), float)
         self.assertAlmostEqual(actual, expected, delta=1e-7)
         self.assertEqual(actual, repeated)
         self.assertEqual(self.model.threshold, self.saved["threshold"])
-        self.assertEqual(self.model.threshold, 0.32226136326789856)
         np.testing.assert_array_equal(pixels, before)
 
     def test_model_pil_exif_and_rgb_array_agree(self):

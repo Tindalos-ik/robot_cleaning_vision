@@ -3,7 +3,7 @@
 第一级：每个自动窗口的 160 维 HSV 特征 → 32 个隐藏单元 → 1 个区域分数。
 第二级：30 维区域分数统计 + 58 维整图特征 → 8 个隐藏单元 → 1 个整图分数。
 
-这里只加载已有权重并预测；标准化参数、候选窗口配置和判定阈值也来自同一权重文件。
+权重文件保存两级标准化参数、窗口配置和阈值；baseline1 命令行采用固定部署阈值。
 """
 
 from pathlib import Path
@@ -17,6 +17,8 @@ from .features import extract_context, extract_regions, generate_windows, prepar
 
 
 DEFAULT_MODEL_PATH = Path(__file__).resolve().parents[4] / "artifacts" / "mlp" / "model.pt"
+# 训练评估与 baseline1 图片、摄像头入口共用此阈值。
+DEPLOYMENT_THRESHOLD = 0.5
 
 # 与训练时一致：两个网络均为“全连接 → ReLU → 全连接”。
 # Sigmoid 在实际预测时调用，不放进 Sequential，便于明确区分原始输出和分数。

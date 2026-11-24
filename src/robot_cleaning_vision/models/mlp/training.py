@@ -1,4 +1,4 @@
-"""区域训练 → 场景折外分数 → 整图训练 → 验证阈值 → 单文件模型。"""
+"""区域训练、场景折外特征和整图训练，按部署阈值报告验证指标。"""
 
 from copy import deepcopy
 from datetime import datetime
@@ -14,7 +14,7 @@ import torch
 from torch import nn
 
 from .features import extract_context, extract_regions, generate_windows, prepare_image, rgb_image
-from .model import _network, score_summary
+from .model import DEPLOYMENT_THRESHOLD, _network, score_summary
 
 
 def _training_patches(image, objects, image_id, proposal, rng):
@@ -111,7 +111,11 @@ def _probabilities(network, features, mean, scale):
 
 
 def _fit_network(features, labels, weights, hidden, config, seed, validation=None):
-    """区域网络固定轮数；整图网络按验证损失早停并恢复最佳权重。"""
+    """用 features、labels 和样本 weights 训练宽度为 hidden 的 MLP。
+
+    config 指定优化参数，seed 控制初始化和打乱。提供 validation 特征和标签时，
+    按类均衡的验证损失早停；FAIL 权重只影响训练。
+    """
     # 只用当前训练折拟合统计量，再转换为推理时使用的float32。
     torch.manual_seed(seed)
     generator = torch.Generator().manual_seed(seed)
@@ -120,7 +124,13 @@ def _fit_network(features, labels, weights, hidden, config, seed, validation=Non
     scale = scaler.scale_.astype(np.float32)
     inputs = torch.from_numpy((features - mean) / scale)
     targets = torch.as_tensor(labels, dtype=torch.float32).reshape(-1, 1)
-    weights = torch.from_numpy(_balance_weights(labels, weights)).reshape(-1, 1)
+    weights = _balance_weights(labels, weights)
+    fail_weight = config.get('fail_weight', 1.0)
+    if fail_weight != 1.0:
+        # 调整两类总权重之比，保持所有样本的平均权重为 1。
+        weights[labels == 1] *= fail_weight
+        weights *= len(labels) / weights.sum()
+    weights = torch.from_numpy(weights).reshape(-1, 1)
 
     # 结构由输入维数和隐藏单元数确定；BCE直接接收未做Sigmoid的logit。
     network = _network(features.shape[1], hidden)
@@ -194,28 +204,8 @@ def _image_features(bags, network, mean, scale):
     return np.asarray(rows, dtype=np.float32)
 
 
-def choose_threshold(labels, probabilities, minimum_recall=0.9):
-    """仅用验证集，在满足目标召回率时尽量正确放行；阈值放在相邻分数中间。"""
-    # FAIL为正类。先保证足够多的FAIL被检出，再比较有多少PASS被正确放行。
-    candidates = np.unique(np.r_[0.0, probabilities, 1.0])
-    required = int(np.ceil(np.sum(labels == 1) * minimum_recall))
-    best_key = (-1, -1)
-    threshold = 0.0
-    for candidate in candidates:
-        predicted = probabilities >= candidate
-        true_positive = int(np.sum(predicted & (labels == 1)))
-        true_negative = int(np.sum(~predicted & (labels == 0)))
-        key = (true_negative, true_positive)
-        if true_positive >= required and key > best_key:
-            best_key = key
-            threshold = float(candidate)
-    # 同一对相邻分数之间的阈值产生相同分类；取中点避免卡在某个样本分数上。
-    lower = probabilities[probabilities < threshold]
-    return float((lower.max() + threshold) / 2) if len(lower) else threshold
-
-
 def evaluation_metrics(labels, probabilities, threshold):
-    """用固定阈值汇总验证结果；混淆矩阵的行是真值、列是预测。"""
+    """用 threshold 汇总 labels 与 probabilities；混淆矩阵的行是真值、列是预测。"""
     predicted = probabilities >= threshold
     tn, fp, fn, tp = confusion_matrix(labels, predicted, labels=[0, 1]).ravel()
     fail_recall = float(tp / (tp + fn))
@@ -232,18 +222,11 @@ def evaluation_metrics(labels, probabilities, threshold):
     }
 
 
-def train_model(train_dataset, val_dataset, output_root, *, annotations, proposal, region_config,
-                image_config, folds=3, seed=42, minimum_recall=0.9, provenance=None):
-    """完整重训选定结构，结果另存目录，不修改当前实测模型。
+def _prepare_image_training(train_dataset, val_dataset, proposal, region_config, folds, seed):
+    """从 train_dataset 和 val_dataset 生成整图训练和验证输入。
 
-    顺序：
-    1. 提取train/val像素特征，只有train生成区域监督。
-    2. 在train内部按场景分折，训练区域网络并给当前留出图片打分。
-    3. 使用全部train区域训练最终部署用的区域网络，给val打分。
-    4. 用train折外88维输入训练整图网络，以val损失早停。
-    5. 由val选择阈值，保存两个网络及各自标准化参数。
-
-    参数 provenance 为入口记录的数据来源、标注路径和 SHA256，可供训练报告回查。
+    proposal 定义窗口，region_config 定义区域优化参数，folds 是场景折数，
+    seed 用于区域采样和训练。返回区域检查点、两组矩阵和标签、区域训练记录。
     """
     torch.set_num_threads(1)
     train_bags, patches = prepare_dataset(train_dataset, proposal, training=True, seed=seed)
@@ -286,30 +269,68 @@ def train_model(train_dataset, val_dataset, output_root, *, annotations, proposa
         patches['features'], patches['labels'], patches['weights'], 32, region_config, seed)
     # val只经过最终区域网络的前向计算，没有参与其权重或scaler拟合。
     val_features = _image_features(val_bags, region_network, region_mean, region_scale)
+    region_checkpoint = {
+        'mode': 'color', 'proposal': proposal,
+        'state_dict': region_network.state_dict(),
+        'mean': torch.from_numpy(region_mean), 'scale': torch.from_numpy(region_scale),
+    }
+    report = {
+        'fold_seed': 123, 'folds': fold_reports,
+        'fold_policy': 'StratifiedGroupKFold on train group_id; fit-only patch scaler and weights',
+        'train_image_ids': train_ids.tolist(),
+        'val_image_ids': [bag['image_id'] for bag in val_bags],
+        'region_history': region_history,
+    }
+    return region_checkpoint, (oof, labels), (val_features, val_labels), report
+
+
+def _fit_image_checkpoint(region_checkpoint, train, validation, image_config, seed):
+    """用区域 region_checkpoint 和整图 train、validation 完成两级模型。
+
+    train 和 validation 都是（特征、标签）；image_config 设置整图优化参数，
+    seed 控制初始化和打乱。返回检查点、验证分数及早停记录。
+    """
     print('训练整图网络：使用场景折外的88维输入', flush=True)
+    oof, labels = train
+    val_features, _ = validation
     image_network, image_mean, image_scale, image_history, best_epoch = _fit_network(
-        oof, labels, np.ones(len(labels)), 8, image_config, seed, (val_features, val_labels))
-    probabilities = _probabilities(image_network, val_features, image_mean, image_scale)
-    threshold = choose_threshold(val_labels, probabilities, minimum_recall)
-
-    # 保存格式与MLPModel.load一致：两个state_dict、两组scaler、窗口配置和阈值。
-    # 单个model.pt即可完成整图预测，不依赖训练缓存或某个折模型文件。
-
+        oof, labels, np.ones(len(labels)), 8, image_config, seed, validation)
+    # 推理每次只送入一张图，验证也使用单行前向计算。
+    probabilities = _deployment_probabilities(image_network, val_features, image_mean, image_scale)
     checkpoint = {
         'kind': 'regional-score-stack-v1',
         'summary_version': 'region-score-summary-30-v1',
         'include_context': True,
         'context_version': 'local-384-v1',
-        'region_checkpoint': {
-            'mode': 'color', 'proposal': proposal,
-            'state_dict': region_network.state_dict(),
-            'mean': torch.from_numpy(region_mean), 'scale': torch.from_numpy(region_scale),
-        },
+        'region_checkpoint': region_checkpoint,
         'state_dict': image_network.state_dict(),
         'mean': torch.from_numpy(image_mean), 'scale': torch.from_numpy(image_scale),
-        'threshold': threshold,
+        'threshold': DEPLOYMENT_THRESHOLD,
     }
-    metrics = evaluation_metrics(val_labels, probabilities, threshold)
+    return checkpoint, probabilities, image_history, best_epoch
+
+
+def _deployment_probabilities(network, features, mean, scale):
+    """按实际推理的单图形状，用 network 及标准化参数 mean、scale 为 features 打分。"""
+    normalized = (features - mean) / scale
+    with torch.inference_mode():
+        return np.asarray([network(row[None, :]).sigmoid().item() for row in torch.from_numpy(normalized)])
+
+
+def train_model(train_dataset, val_dataset, output_root, *, annotations, proposal, region_config,
+                image_config, folds=3, seed=42, provenance=None):
+    """用 train_dataset 训练两级模型，用 val_dataset 早停并按部署阈值评估。
+
+    output_root 用于新运行目录；annotations 和 provenance 记录数据来源。
+    proposal 定义窗口，region_config 和 image_config 定义优化参数；
+    folds 是训练集场景折数，seed 用于采样、初始化及打乱。
+    """
+    region, train, validation, region_report = _prepare_image_training(
+        train_dataset, val_dataset, proposal, region_config, folds, seed)
+    checkpoint, probabilities, image_history, best_epoch = _fit_image_checkpoint(
+        region, train, validation, image_config, seed)
+    _, val_labels = validation
+    metrics = evaluation_metrics(val_labels, probabilities, DEPLOYMENT_THRESHOLD)
     report = {
         'architecture': {'region': [160, 32, 1], 'image': [88, 8, 1]},
         'proposal': proposal,
@@ -320,15 +341,14 @@ def train_model(train_dataset, val_dataset, output_root, *, annotations, proposa
         'annotations_sha256': hashlib.sha256(Path(annotations).read_bytes()).hexdigest(),
         'annotations': str(annotations),
         'data_provenance': provenance,
-        'seed': seed, 'fold_seed': 123, 'folds': fold_reports,
-        'fold_policy': 'StratifiedGroupKFold on train group_id; fit-only patch scaler and weights',
-        'train_image_ids': train_ids.tolist(),
-        'val_image_ids': [bag['image_id'] for bag in val_bags],
-        'region_history': region_history, 'image_history': image_history,
+        **region_report,
+        'seed': seed,
+        'deployment_threshold': DEPLOYMENT_THRESHOLD,
+        'image_history': image_history,
         'best_image_epoch': best_epoch, 'validation': metrics,
         'validation_predictions': [
-            {'image_id': bag['image_id'], 'label': bag['label'], 'fail_probability': float(score)}
-            for bag, score in zip(val_bags, probabilities)
+            {'image_id': image_id, 'label': int(label), 'fail_probability': float(score)}
+            for image_id, label, score in zip(region_report['val_image_ids'], val_labels, probabilities)
         ],
     }
     # 每次训练生成独立目录。默认的artifacts/mlp/model.pt完全不动，

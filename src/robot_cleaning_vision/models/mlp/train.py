@@ -1,16 +1,16 @@
-"""训练区域与整图 MLP，支持补充训练数据及真实特征检查。"""
+"""训练区域与整图 MLP，读取审核过的补充标注并按部署阈值评估。"""
 
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 
 import numpy as np
 
 from dataprocessing.taco import ProjectDataset
 from dataprocessing.supplemental.datasets import (
-    SUPPLEMENTAL_ANNOTATIONS, add_supplemental_argument, supplemental_dataset,
-    training_dataset,
+    SUPPLEMENTAL_ANNOTATIONS, TrainingDataset, add_supplemental_argument, supplemental_dataset,
 )
 
 from .training import prepare_dataset, train_model
@@ -19,6 +19,7 @@ from .training import prepare_dataset, train_model
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
 DATA_ROOT = PROJECT_ROOT / 'data/raw/taco'
 ANNOTATIONS = DATA_ROOT / 'annotations_project.json'
+LOCAL_TRAINING_ANNOTATIONS = SUPPLEMENTAL_ANNOTATIONS.with_name('local_training_annotations_project.json')
 OUTPUT_ROOT = PROJECT_ROOT / 'artifacts/mlp/training'
 
 # ===== 固定的特征与网络方案 =====
@@ -47,14 +48,14 @@ IMAGE_CONFIG = {
     'learning_rate': 0.001,
     'weight_decay': 0.01,
     'batch_size': 32,
+    'fail_weight': 1.0,
 }
 FOLDS = 3  # 按原图的group_id分折，同一场景不能跨折。
 SEED = 42
-MINIMUM_FAIL_RECALL = 0.9  # 仅在验证集上选择满足此召回率的整图阈值。
 
 
-def data_provenance(supplemental):
-    """按 supplemental 模式记录训练标注路径和 SHA256；none 不读取补充标注。"""
+def data_provenance(supplemental, local_training_root=None):
+    """记录 supplemental 来源及可选本地原图根目录 local_training_root、标注和摘要。"""
     report = {
         'supplemental': supplemental,
         'annotations': str(ANNOTATIONS),
@@ -65,6 +66,13 @@ def data_provenance(supplemental):
             supplemental_annotations=str(SUPPLEMENTAL_ANNOTATIONS),
             supplemental_annotations_sha256=hashlib.sha256(
                 SUPPLEMENTAL_ANNOTATIONS.read_bytes()).hexdigest(),
+        )
+    if local_training_root is not None:
+        report.update(
+            local_training_root=str(local_training_root.resolve()),
+            local_training_annotations=str(LOCAL_TRAINING_ANNOTATIONS),
+            local_training_annotations_sha256=hashlib.sha256(
+                LOCAL_TRAINING_ANNOTATIONS.read_bytes()).hexdigest(),
         )
     return report
 
@@ -100,31 +108,63 @@ def check_data(dataset, supplemental, provenance):
     return report
 
 
+def _positive_float(value):
+    """把命令行字符串 value 转成有限正数，拒绝无效的优化参数。"""
+    result = float(value)
+    if not math.isfinite(result) or result <= 0:
+        raise argparse.ArgumentTypeError('必须是有限正数')
+    return result
+
+
+def _select_training_data(supplemental, local_root, *, check_data=False):
+    """读取 supplemental 指定的公开补充来源和 local_root 下的本地审核图片。
+
+    正式训练始终加入 TACO train；check_data 为真且指定了补充图时只检查补充图。
+    每个分区直接加入组合，以便共用读取器检查图像、标注和场景组的 ID 冲突。
+    """
+    extra = []
+    if supplemental != 'none':
+        extra.append(supplemental_dataset(supplemental))
+    if local_root is not None:
+        local = ProjectDataset(local_root, LOCAL_TRAINING_ANNOTATIONS, 'train')
+        if not len(local):
+            raise ValueError('本地审核标注没有训练图片')
+        extra.append(local)
+    if not check_data or not extra:
+        extra.insert(0, ProjectDataset(DATA_ROOT, ANNOTATIONS, 'train'))
+    return TrainingDataset(*extra) if len(extra) > 1 else extra[0]
+
+
 def main(argv=None):
-    """解析 argv，检查真实数据或按原有验证分区执行训练。"""
+    """解析 argv（省略时读取进程参数），检查真实数据或执行训练。"""
     parser = argparse.ArgumentParser(description=__doc__)
     add_supplemental_argument(parser)
+    parser.add_argument('--local-training-root', type=Path,
+                        help='审核标注中图片相对路径的根目录，例如 data/raw/supplemental/local_training。')
+    parser.add_argument('--image-fail-weight', type=_positive_float, default=IMAGE_CONFIG['fail_weight'],
+                        help='整图训练时 FAIL 类相对 PASS 类的总损失权重。')
+    parser.add_argument('--image-weight-decay', type=_positive_float, default=IMAGE_CONFIG['weight_decay'],
+                        help='整图 Adam 优化器的 weight_decay。')
     parser.add_argument('--check-data', action='store_true', help='提取真实区域特征并打印数据统计，不训练或保存模型')
     args = parser.parse_args(argv)
-    provenance = data_provenance(args.supplemental)
+    dataset = _select_training_data(args.supplemental, args.local_training_root, check_data=args.check_data)
+    provenance = data_provenance(args.supplemental, args.local_training_root)
     if args.check_data:
-        dataset = (supplemental_dataset(args.supplemental) if args.supplemental != 'none'
-                   else ProjectDataset(DATA_ROOT, ANNOTATIONS, 'train'))
         return check_data(dataset, args.supplemental, provenance)
-    # 读取已经划好的正式分区，不重新划分图片，不使用test。
-    train_dataset = training_dataset(DATA_ROOT, ANNOTATIONS, args.supplemental)
+    # 保留原 TACO 验证分区，训练阶段不读取测试图片。
+    image_config = dict(IMAGE_CONFIG, fail_weight=args.image_fail_weight,
+                        weight_decay=args.image_weight_decay)
     val_dataset = ProjectDataset(DATA_ROOT, ANNOTATIONS, 'val')
     return train_model(
-        train_dataset,
+        dataset,
         val_dataset,
         OUTPUT_ROOT,
         annotations=ANNOTATIONS,
         proposal=PROPOSAL,
         region_config=REGION_CONFIG,
-        image_config=IMAGE_CONFIG,
+        image_config=image_config,
         folds=FOLDS,
         seed=SEED,
-        minimum_recall=MINIMUM_FAIL_RECALL,
         provenance=provenance,
     )
 

@@ -1,4 +1,4 @@
-# 手工特征 + MLP 场景实测
+# 手工特征 + MLP
 
 ## 1. 运行
 
@@ -6,19 +6,19 @@
 
 ```bash
 # 摄像头0：实时识别
-uv run robot-cleaning-vision run --model baseline1
+uv run --locked robot-cleaning-vision run --model baseline1
 
 # 指定图片：预测并保存结果
-uv run robot-cleaning-vision run --model baseline1 --input data/raw/taco/batch_5/000103.JPG
+uv run --locked robot-cleaning-vision run --model baseline1 --input data/raw/taco/batch_5/000103.JPG
 
 # 换摄像头
-uv run robot-cleaning-vision run --model baseline1 --camera 1
+uv run --locked robot-cleaning-vision run --model baseline1 --camera 1
 ```
 
 默认加载 `artifacts/mlp/model.pt`；命令行实测使用 `0.5` 阈值，无需指定权重或预测文件。
 
 - 摄像头窗口：`Q` / `Esc` / 关闭窗口退出；`S` / 空格保存当前帧。
-- 图片模式：保存预测JSON与中文结果PNG。
+- 图片模式保存 `original.png`、`prediction.json` 和中文结果 `result.png`。
 - 摄像头保存：原图、预测JSON和中文结果PNG，三者对应同一帧。
 - 默认保存到 `artifacts/inference/`；`--output` 可指定其他根目录。每次保存单独建目录，不覆盖其他结果。
 - 中文字体默认使用Windows微软雅黑；可用 `--font 字体路径` 指定其他中文字体。
@@ -29,7 +29,7 @@ Windows下，整数摄像头索引使用DirectShow后端，视频文件和网络
 
 **FAIL表示检出项目目标，PASS表示未检出。** 项目目标包括罐、瓶、柔性包装物、杯、纸类物品。
 
-窗口右侧显示判定、FAIL 分数和当前帧耗时。命令行实测中分数达到 **0.5** 时判 FAIL。此模型只做整图二分类，不绘目标框、不输出类别或计数。
+窗口右侧显示判定、FAIL 分数和当前帧耗时。命令行在分数达到 **0.5** 时判 FAIL。`prediction.json` 的 `fail_probability` 字段记录这个 Sigmoid 分数。模型只做整图二分类，不绘制目标框，也不输出类别或计数。
 
 场景实测时，分别观察有目标场景是否漏检、无目标场景是否误报；保存出错帧便于检查。
 
@@ -66,7 +66,7 @@ flowchart TD
     T -->|否| V["PASS：未检出目标"]
 ```
 
-N 是自动生成的窗口数量。图中的 `0.5` 是命令行实测阈值。
+N 是自动生成的窗口数量。验证、测试和命令行均使用 `0.5` 阈值。
 
 ### 3.1 输入：图片怎样变成160个数
 
@@ -93,9 +93,9 @@ N 是自动生成的窗口数量。图中的 `0.5` 是命令行实测阈值。
 | 第二层 `Linear(32, 1)` | 32 → 1 | 综合32个响应，得到一个区域原始分数 | 33 |
 | 输出变换 `Sigmoid` | 1 → 1 | 将原始分数映射到0～1，作为该区域的目标分数 | 0 |
 
-`Linear`的计算是“输入与权重加权求和，再加偏置”。例如第一层有 `160×32` 个权重和32个偏置，共5,152个参数。32个隐藏单元不是32种物体，而是训练得到的特征组合。
+`Linear` 计算输入与权重的加权和，再加偏置。第一层共有 `160×32` 个权重和 32 个偏置；32 个隐藏单元各学习一个特征组合。
 
-最后一层的原始输出叫 **logit**，可以是任意实数；Sigmoid按 `1/(1+exp(−logit))` 转为分数。代码中Sigmoid在 `predict()` 调用，不写在 `_network()` 的层列表中。
+最后一层的原始输出叫 **logit**，可以是任意实数。`predict()` 用 Sigmoid 将它转为 [0, 1] 内的分数。
 
 一张图有N个窗口时，数据形状依次为 `(N,160) → (N,32) → (N,1)`。网络权重在所有窗口间共享。
 
@@ -134,14 +134,14 @@ N 是自动生成的窗口数量。图中的 `0.5` 是命令行实测阈值。
 | 第二层 `Linear(8, 1)` | 8 → 1 | 把8个响应合成一个整图logit | 9 |
 | 输出变换 `Sigmoid` | 1 → 1 | 得到0～1的整图FAIL分数 | 0 |
 
-整图网络可以学习“哪些区域证据结合什么背景更值得相信”，而不是只取所有窗口的最高分。
+整图网络结合区域分数的分布和整图背景特征作出判断。
 
 区域网络共有5,185个参数，整图网络共有721个，合计**5,906个可训练参数**。特征统计、标准化和Sigmoid没有额外的可训练网络权重。
 
 ### 3.5 最终判定与代码位置
 
 公共后处理比较整图分数与调用方指定的阈值：达到阈值判 FAIL，低于阈值判 PASS。
-命令行实测使用 `0.5`；下文保留的验证集指标使用权重内的 `0.32226136326789856`。
+`baseline1` CLI 使用与训练评估共用的固定阈值 `0.5`，包括用 `--model-path` 试用其他 MLP 权重时。
 
 `features.py`负责输入特征；`model.py::_network()`定义两种网络共用的层结构，`score_summary()`完成30维汇总，`MLPModel.predict()`按上述顺序串起计算；`inference.py`负责采集、后处理、中文显示与保存。
 
@@ -149,90 +149,42 @@ N 是自动生成的窗口数量。图中的 `0.5` 是命令行实测阈值。
 
 ## 4. 重新训练
 
-在项目根目录直接运行：
+先按[数据准备指南](../dataprocessing/README.md)准备原图和标注。保留模型使用以下训练分区：
+
+| 来源 | PASS | FAIL | 图片根目录 | 项目标注 |
+|---|---:|---:|---|---|
+| TACO train | 124 | 497 | `data/raw/taco/` | `data/raw/taco/annotations_project.json` |
+| CoxPWD | 70 | 40 | `data/raw/supplemental/` | `data/processed/supplemental/annotations_project.json` |
+| Wikimedia | 21 | 0 | `data/raw/supplemental/` | 同上 |
+| 本地审核图 | 3 | 192 | `data/raw/supplemental/local_training/` | `data/processed/supplemental/local_training_annotations_project.json` |
+
+在项目根目录执行：
 
 ```bash
-uv run python -m robot_cleaning_vision.models.mlp.train
+uv sync --locked
+uv run --locked python -m robot_cleaning_vision.models.mlp.train --supplemental all --local-training-root data/raw/supplemental/local_training --image-fail-weight 1.5 --image-weight-decay 0.01
 ```
 
-`train.py`顶部集中配置数据路径、候选窗口、区域训练轮数、整图早停、种子和目标召回率。`training.py`实现下面的完整流程。
+`--local-training-root` 是标注中 `file_name` 的相对路径起点。JPG 和逐图 JSON 保存在 `data/raw/supplemental/local_training/训练集/` 的分类目录下，包含未纳入训练的原件；实测图片仍单独存放在 `data/raw/local/`。训练仅使用审核标注列出的 195 张本地图片。
 
-### 4.1 区域网络怎样训练
+### 4.1 区域训练及场景折外特征
 
-从正式train读取621张图片。每图最多取4个目标框作为正区域，再随机取8个与全部外扩目标框零交集的背景窗口作为负区域；每个区域提取与预测相同的160维HSV特征。
+区域 MLP 每图最多取 4 个目标框和 8 个避开全部外扩目标框的背景窗口。区域训练固定 17 轮，Adam 学习率为 `0.001`、`weight_decay` 为 `0.001`、批大小为 128，采样与训练种子均为 `42`。
 
-先限制每张原图的样本总权重，再让正、负类对训练的总贡献相同。每批完成清空梯度、前向计算、加权二元交叉熵、反向传播及Adam更新。区域网络固定训练17轮，学习率0.001、weight_decay为0.001、batch size为128。
+947 张训练图按 `group_id` 用 `StratifiedGroupKFold` 分成三折（分折种子 `123`）。每次只用两折拟合区域模型、特征标准化参数和类别权重，再为留出折生成整图特征。这使同一场景的图片和目标区域不会进入为它打分的模型。整图网络使用 947 行折外特征；部署的区域模型另用全部训练图拟合，并为原 TACO val 生成输入。
 
-### 4.2 为什么还要做三折训练
+### 4.2 整图训练和判定
 
-整图网络需要区域网络的分数，但不能只学习区域网络在熟悉图片上的表现。因此在train内部按`group_id`分成三折：每次用两折场景训练区域网络，给剩下一折图片打分。
+整图训练的 FAIL 类总损失权重为 PASS 类的 `1.5` 倍。Adam 学习率为 `0.001`、`weight_decay` 为 `0.01`、批大小为 32、最多 200 轮。按原 TACO val 上的类别均衡损失早停，连续 25 轮无改善时恢复最低损失权重；保留配置的最佳整图轮次为 31。
 
-每张训练图恰好留出一次，得到30维区域分数统计，再拼接58维整图特征，形成`(621, 88)`的整图训练矩阵。各折的标准化和类别权重仅由该折训练区域计算。
+选型在原 TACO val 上以固定 `0.5` 计算指标。先看 FAIL 召回能否达到 90%，再依次取平衡准确率更高、FAIL 召回更高、参数量更小的模型；全部低于 90% 时从平衡准确率开始比较。原 TACO test 只用于模型冻结后的评估，阈值仍为 `0.5`。
 
-三折只负责生成训练输入。随后用全部train区域重新训练一个区域网络，作为最终保存和部署的区域网络。
+### 4.3 试用和核对产物
 
-### 4.3 整图网络、早停和阈值
+训练在 `artifacts/mlp/training/` 下新建时间戳目录，不覆盖默认模型。该目录的 `model.pt` 可用 `run --model baseline1 --model-path <权重路径> --input <图片路径>` 试用；`training.json` 记录配置、折分与最佳轮次，`metrics.json` 记录该次验证指标和权重 SHA-256。
 
-整图网络使用折外88维输入训练；正式val的134张图通过最终区域网络生成输入，用来计算验证损失。其标准化参数只在621个整图训练向量上拟合。
+默认入口使用 `artifacts/mlp/model.pt`。同目录的 `metrics.json` 保存保留配置、标注路径及摘要、场景折、最佳轮次、原 TACO 验证／测试指标及权重 SHA-256。要安装复现的权重，先核对其 SHA-256，再将新目录的 `model.pt` 复制到默认路径。核对默认权重可运行：
 
-整图网络学习率0.001、weight_decay为0.01、batch size为32，最多200轮；验证损失连续25轮未改善就早停，恢复验证损失最低的权重。最后仅在val上选择满足至少90%目标检出率、且尽量提高无目标放行率的阈值。
-
-每次网络训练正常完成时均匀打印十次日志，不足十轮则每轮打印；早停会打印实际轮次。报告保存每一轮的数据。
-
-### 4.4 新模型保存在哪里
-
-每次训练新建`artifacts/mlp/training/<时间戳>/`：
-
-| 文件 | 内容 |
-|---|---|
-| `model.pt` | 两个网络、两级标准化参数、窗口配置与阈值，可直接由`MLPModel.load(路径)`加载 |
-| `training.json` | 实际配置、区域及整图逐轮损失、场景折、最佳轮次、验证指标及逐图分数 |
-| `metrics.json` | 新模型的验证效果与文件哈希 |
-
-训练不会覆盖当前`artifacts/mlp/model.pt`。确认新模型效果后，再决定是否将新目录的`model.pt`与`metrics.json`一起替换到该位置，供现有实测入口使用。
-
-这里保留的是同一结构的训练方案，内部三折采用场景隔离；当前保留权重当时按原图分折。因此重新训练的指标可能不同，原模型效果表只对应当前保留权重。
-
-## 5. 保留模型的效果
-
-以下为已有134张验证图片的结果，不是本地场景验收结果：
-
-| 指标 | 结果 |
-|---|---:|
-| 有目标检出率 | 92.52% |
-| 无目标放行率 | 55.56% |
-| 平衡准确率 | 74.04% |
-| ROC-AUC | 0.860 |
-| 漏检 / 误报 | 8 / 12 |
-
-验证集参与过方案选择，汇总层训练的三折按原图而非场景划分。完整数值保存在 `artifacts/mlp/metrics.json`；场景实测仍需关注误报和漏检。
-
-### ROC-AUC是什么
-
-**ROC-AUC衡量模型区分有目标与无目标图片的能力，不只看某一个判定阈值。**
-
-改变FAIL阈值会产生不同取舍：阈值降低，通常检出更多目标、误报也更多；阈值提高，通常误报减少、漏检增加。
-
-ROC曲线把这些取舍画出来：横轴是**误报率**（无目标图片被判成FAIL的比例），纵轴是**检出率**（有目标图片被判成FAIL的比例）。AUC就是曲线下面积，取值为0～1。
-
-| AUC | 含义 |
-|---|---|
-| 1 | 所有有目标图片的分数都高于无目标图片 |
-| 0.5 | 排序能力接近随机 |
-| 小于0.5 | 排序方向倾向于反了 |
-
-当前验证集AUC约为0.860：随机抽一张有目标图片和一张无目标图片，模型约有86%的概率给有目标图片更高的FAIL分数，并列计半次。
-
-**AUC不是预测正确率。** 实际漏检、误报还取决于判定阈值，因此要同时看检出率、放行率和混淆矩阵。
-
-## 6. 保留的文件
-
-- `artifacts/mlp/model.pt`：唯一模型权重。
-- `artifacts/mlp/metrics.json`：该模型的效果摘要。
-- `models/mlp/features.py`：窗口、颜色及整图特征。
-- `models/mlp/model.py`：模型加载和预测。
-- `models/mlp/train.py`：配置与无参数训练入口。
-- `models/mlp/training.py`：区域训练、场景折外分数、整图训练及模型保存，负责具体如何训练。
-- `inference.py`：采集、真实推理、公共后处理、显示和保存；默认配置位于顶部。
-
-后面五项源码路径均位于 `src/robot_cleaning_vision/`。保留同一方案的训练和推理实现，不包含其他实验优化分支。
+```bash
+uv run --locked python -c "import hashlib; from pathlib import Path; print(hashlib.sha256(Path('artifacts/mlp/model.pt').read_bytes()).hexdigest())"
+```
