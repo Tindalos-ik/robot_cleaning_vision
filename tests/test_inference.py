@@ -11,6 +11,7 @@ import numpy as np
 from PIL import Image
 
 from robot_cleaning_vision.inference import classify_frame, run_image, save_prediction
+from robot_cleaning_vision.models.detector.model import DetectorModel
 from robot_cleaning_vision.models.mlp.model import MLPModel
 from robot_cleaning_vision.visualization import ResultRenderer
 
@@ -98,6 +99,16 @@ class InferenceTests(unittest.TestCase):
             )
             self.assertEqual(payload["threshold"], self.model.threshold)
             self.assertEqual(source.read_bytes(), source_bytes)
+
+
+class DetectorCheckpointTests(unittest.TestCase):
+    def test_native_coco_checkpoint_is_rejected_before_inference(self) -> None:
+        """用真实的 80 类 COCO checkpoint 检查五类模型的加载校验。"""
+        path = Path("artifacts/detector/initialization/yolo11n.pt")
+        if not path.is_file():
+            self.skipTest("缺少本地官方 YOLO11n COCO 权重")
+        with self.assertRaisesRegex(ValueError, "实际为 80 类"):
+            DetectorModel.load(path)
 
 
 if __name__ == "__main__":

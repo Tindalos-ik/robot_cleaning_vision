@@ -17,15 +17,19 @@ uv run --locked robot-cleaning-vision --help
 |---|---|---|
 | `baseline1` | [手工特征 + MLP](docs/手工特征+MLP.md) | `artifacts/mlp/model.pt` |
 | `baseline2` | [冻结 ResNet-50 + 逻辑回归](docs/冻结CNN+线性分类器.md) | `artifacts/cnn_linear/model.pt` |
+| `baseline3` | [YOLO11n Detect 五类目标检测](docs/三种视觉方法.md#3-适配五类垃圾的目标检测器) | `artifacts/detector/model.pt` |
 
 ```bash
-uv run --locked robot-cleaning-vision run --model baseline2 --input image.jpg
-uv run --locked robot-cleaning-vision run --model baseline2 --camera 0
+uv run --locked robot-cleaning-vision run --model baseline3 --input image.jpg
+uv run --locked robot-cleaning-vision run --model baseline3 --camera 0
 ```
 
 把 `image.jpg` 换成图片路径。用 `--model-path` 指定其他权重；默认中文字体不可用时，用 `--font` 指定本机字体文件。
+`--camera` 也接受 OpenCV 可读取的视频文件路径或视频流地址。
 
 单图识别自动保存原图、`prediction.json` 和标注图到 `artifacts/inference/` 下的新目录。摄像头窗口按 `S` 或空格保存，按 `Q` 或 `Esc` 退出。
+
+`baseline3` 使用 640×640 输入画布、0.25 置信度阈值与 IoU 0.7 的类别内 NMS。标注图绘制原图坐标下的框、中文类别和得分；信息栏显示五类计数。有保留目标时判 `FAIL`，否则判 `PASS`。
 
 ## 摄像头采集
 
@@ -46,6 +50,14 @@ uv run --locked robot-cleaning-vision process --input original.png --predictions
 ```
 
 把原图、JSON 和字体换成实际路径。`--target-size` 按高、宽填写预测所用的预处理尺寸；输出必须是尚不存在的 PNG 文件，父目录须已存在。
+
+回放 `baseline3` 时，在结果目录中使用保存的 `original.png` 和 `prediction.json`：
+
+```bash
+uv run --locked robot-cleaning-vision process --input original.png --predictions prediction.json --target-size 640 640 --threshold 0.25 --font "C:/Windows/Fonts/msyh.ttc" --output annotated.png
+```
+
+`prediction.json` 中的 `boxes` 是供 `process` 使用的画布框；`original_boxes` 是原图框，两组框与 `class_ids`、`scores` 同序。用 JSON 中的 `elapsed_ms` 作为 `--elapsed-ms` 可复现信息栏耗时。回放不会重新加载模型或执行 NMS。
 
 JSON 还可来自外部模型，须使用 UTF-8 并包含 `model_name` 和 `task`：
 

@@ -1,4 +1,4 @@
-"""在图片和摄像头会话中运行所选分类模型、绘制并保存预测。"""
+"""在图片和摄像头会话中运行所选视觉模型、绘制并保存预测。"""
 
 from dataclasses import dataclass
 from datetime import datetime
@@ -13,11 +13,12 @@ from PIL import Image, ImageOps
 import numpy as np
 
 from .capture.camera import BGRFrame, Camera
+from .models.detector.model import CanvasDetections, DetectorModel
 from .models.mlp.model import DEFAULT_MODEL_PATH, DEPLOYMENT_THRESHOLD, MLPModel
-from .postprocessing import ImageResult, postprocess_classification
+from .postprocessing import ImageResult, postprocess_classification, postprocess_detection
 from .visualization import ResultRenderer
 
-MODEL_IDS = ("baseline1", "baseline2")
+MODEL_IDS = ("baseline1", "baseline2", "baseline3")
 DEFAULT_CAMERA: int | str = 0
 DEFAULT_FONT = Path("C:/Windows/Fonts/msyh.ttc")
 DEFAULT_OUTPUT = Path("artifacts/inference")
@@ -48,6 +49,7 @@ class FramePrediction:
     model_id: str
     model_name: str
     model_path: Path
+    detections: CanvasDetections | None = None
 
 
 def classify_frame(
@@ -63,20 +65,46 @@ def classify_frame(
     probability = model.predict_bgr(frame)
     threshold = float(model.threshold)
     result = postprocess_classification(probability, threshold=threshold)
+    return _render_prediction(frame, model, renderer, result, started_at)
+
+
+def _predict_frame(
+    frame: BGRFrame, model: Classifier | DetectorModel, renderer: ResultRenderer, *,
+    started_at: float,
+) -> FramePrediction:
+    """预测 BGR 原图 frame，用 renderer 标注；started_at 是帧处理的起始时间。"""
+    if not isinstance(model, DetectorModel):
+        return classify_frame(frame, model, renderer, started_at=started_at)
+    detections = model.predict_bgr(frame)
+    result = postprocess_detection(
+        detections.boxes, detections.class_ids, detections.scores, detections.transform,
+        threshold=model.threshold,
+    )
+    return _render_prediction(frame, model, renderer, result, started_at, detections)
+
+
+def _render_prediction(
+    frame: BGRFrame, model: Classifier | DetectorModel, renderer: ResultRenderer,
+    result: ImageResult, started_at: float, detections: CanvasDetections | None = None,
+) -> FramePrediction:
+    """绘制 frame 的 result，记录 model、耗时及用于保存的画布检测 detections。
+
+    renderer 是共用中文渲染器；started_at 为 perf_counter 的帧处理起始时间。
+    """
     elapsed_ms = (perf_counter() - started_at) * 1000
     annotated = renderer.draw(
         frame, result, model_name=f"{model.model_id} · {model.model_name}", elapsed_ms=elapsed_ms,
     )
     return FramePrediction(
-        frame, annotated, result, threshold, elapsed_ms,
-        model.model_id, model.model_name, model.model_path,
+        frame, annotated, result, float(model.threshold), elapsed_ms,
+        model.model_id, model.model_name, model.model_path, detections,
     )
 
 
 def save_prediction(
     prediction: FramePrediction, output: Path, *, source: str | int,
 ) -> Path:
-    """独占新建一次结果目录，保存当前显示帧，绝不重新读帧或重新推理。"""
+    """将当前显示帧 prediction 保存到 output 下的新目录，并记录输入来源 source。"""
     output.mkdir(parents=True, exist_ok=True)
     directory = Path(mkdtemp(prefix=datetime.now().strftime("%Y%m%d_%H%M%S_"), dir=output))
     for filename, frame in (
@@ -85,22 +113,36 @@ def save_prediction(
         with (directory / filename).open("xb") as stream:
             Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)).save(stream, format="PNG")
     payload = {
-        "task": "classification",
         "model_id": prediction.model_id,
         "model_name": prediction.model_name,
         "model_path": str(prediction.model_path),
         "source": source,
-        "fail_probability": prediction.result.image_score,
         "threshold": prediction.threshold,
         "decision": prediction.result.decision,
         "elapsed_ms": prediction.elapsed_ms,
     }
+    detections = prediction.detections
+    if detections is None:
+        probability = prediction.result.image_score
+        payload.update(task="classification", fail_probability=probability)
+        detail = f"FAIL 概率：{probability:.6f}"
+    else:
+        objects = prediction.result.objects
+        payload.update(
+            task="detection",
+            target_size=detections.transform.target_size,
+            boxes=detections.boxes.tolist(),
+            class_ids=detections.class_ids.tolist(),
+            scores=detections.scores.tolist(),
+            original_boxes=[obj.bbox for obj in objects],
+            counts=prediction.result.counts,
+        )
+        detail = f"检测目标：{len(objects)}"
     with (directory / "prediction.json").open("x", encoding="utf-8") as stream:
         json.dump(payload, stream, ensure_ascii=False, indent=2)
         stream.write("\n")
     print(
-        f"已保存（{prediction.model_id} | {prediction.result.decision} | "
-        f"FAIL 概率：{prediction.result.image_score:.6f}）：\n"
+        f"已保存（{prediction.model_id} | {prediction.result.decision} | {detail}）：\n"
         f"  原图：{(directory / 'original.png').resolve()}\n"
         f"  预测：{(directory / 'prediction.json').resolve()}\n"
         f"  中文结果：{(directory / 'result.png').resolve()}",
@@ -110,24 +152,24 @@ def save_prediction(
 
 
 def run_image(
-    path: Path, model: Classifier, renderer: ResultRenderer, output: Path,
+    path: Path, model: Classifier | DetectorModel, renderer: ResultRenderer, output: Path,
 ) -> Path:
-    """按 EXIF 转正原始图片，真实推理并保存 PNG 和 JSON。"""
+    """按 EXIF 转正 path 中的图片，经 model 推理、renderer 绘制后保存至 output。"""
     started_at = perf_counter()
     with Image.open(path) as image:
         rgb = np.array(ImageOps.exif_transpose(image).convert("RGB"))
     frame = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
-    prediction = classify_frame(frame, model, renderer, started_at=started_at)
+    prediction = _predict_frame(frame, model, renderer, started_at=started_at)
     return save_prediction(prediction, output, source=str(path.resolve()))
 
 
 def run_camera(
-    source: int | str, model: Classifier, renderer: ResultRenderer, output: Path,
+    source: int | str, model: Classifier | DetectorModel, renderer: ResultRenderer, output: Path,
 ) -> None:
-    """按键保存实际显示帧；所有退出路径释放相机和窗口。
+    """从设备索引或视频地址 source 读帧，由 model 推理、renderer 绘制。
 
-    Camera 未区分 EOF 与读帧故障，故本地视频结束也明确报告 CameraError，
-    不吞掉其他采集故障；本地视频 smoke 可在结束前按 Q/Esc 或关闭窗口。
+    按键保存实际显示帧至 output；所有退出路径均释放采集设备和窗口。
+    本地视频结束时 Camera 报告读帧错误，可在结束前按 Q/Esc 或关闭窗口。
     """
     camera = Camera(source)
     try:
@@ -138,7 +180,7 @@ def run_camera(
         while True:
             started_at = perf_counter()
             frame = camera.read()
-            prediction = classify_frame(frame, model, renderer, started_at=started_at)
+            prediction = _predict_frame(frame, model, renderer, started_at=started_at)
             cv2.imshow(window_name, prediction.annotated)
             key = cv2.waitKey(1) & 0xFF
             if key in (ord("q"), ord("Q"), 27):
@@ -164,6 +206,7 @@ def run(
     input_path 指定原图；省略时读取 camera。font 为字体路径，output 为结果目录。
     model_path 省略时使用所选模型的默认权重。
     """
+    model: Classifier | DetectorModel
     if model_id == "baseline1":
         model = MLPModel.load(model_path if model_path is not None else DEFAULT_MODEL_PATH)
         # baseline1 的部署规则固定，旧权重文件中的校准阈值不参与 CLI 判定。
@@ -172,8 +215,10 @@ def run(
         from .models.cnn_linear.model import CNNLinearModel
 
         model = CNNLinearModel.load(model_path)
+    elif model_id == "baseline3":
+        model = DetectorModel.load(model_path)
     else:
-        raise ValueError(f"未知分类模型：{model_id}")
+        raise ValueError(f"未知视觉模型：{model_id}")
     print(f"模型：{model.model_id} · {model.model_name} | 权重：{model.model_path}", flush=True)
     renderer = ResultRenderer(font)
     if input_path is not None:

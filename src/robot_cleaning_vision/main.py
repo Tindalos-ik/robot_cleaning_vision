@@ -46,7 +46,7 @@ def _positive_pixels(value: str) -> int:
 
 
 def _run_offline(args: argparse.Namespace) -> None:
-    """处理已有预测，不加载模型；检测坐标必须对应指定的预处理画布。"""
+    """按 args 指定的输入、画布尺寸和阈值回放已有预测并保存标注图。"""
     if args.output.suffix.lower() != ".png":
         raise ValueError("输出必须为 .png 文件")
     if args.output.exists():
@@ -90,6 +90,8 @@ def _run_offline(args: argparse.Namespace) -> None:
             boxes, prediction["class_ids"], prediction["scores"], transform,
             threshold=args.threshold,
         )
+        if prediction.get("model_id") == "baseline3":
+            model_name = f"baseline3 · {model_name}"
     annotated = renderer.draw(
         frame, result, model_name=model_name, elapsed_ms=args.elapsed_ms,
     )
@@ -161,10 +163,10 @@ def main() -> None:
         "--output", type=Path, required=True, help="新标注 PNG 路径，父目录须存在，不覆盖。",
     )
     inference = subparsers.add_parser(
-        "run", help="选择整图分类模型识别图片或实时摄像头，显示中文结果。",
+        "run", help="运行分类或目标检测模型，识别图片或实时摄像头画面。",
     )
     inference.add_argument(
-        "--model", choices=MODEL_IDS, required=True, help="指定本次推理使用的分类模型。",
+        "--model", choices=MODEL_IDS, required=True, help="指定本次推理使用的视觉模型。",
     )
     inference.add_argument(
         "--model-path", type=Path, help="指定所选模型的权重文件；省略时使用默认权重。",

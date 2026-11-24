@@ -39,7 +39,15 @@ MLP 的 `--check-data` 只提取特征并打印数据统计。指定补充来源
 首次特征提取需要 torchvision 官方 ResNet-50 权重。每次只保存新权重 `artifacts/cnn_linear/training/<新目录>/model.pt`，终端报告 TACO val 的校准阈值和评估指标，默认权重保持不变。
 详细流程见[冻结 CNN + 线性分类器](../docs/冻结CNN+线性分类器.md)。
 
-## Indoor Waste v1：CNN 训练数据
+方法三使用同一组 999 张训练图和五类物体框，195 张本地图全部属于训练。准备完原图及室内冻结清单后运行：
+
+```bash
+uv run --locked python -m robot_cleaning_vision.models.detector.train
+```
+
+训练命令核对显示方向、标注、路径和分区，在运行目录临时转换 YOLO 数据；空标签图保留。只用 TACO val 的检测 mAP50:95 选择权重。独立评估和推理命令见 [YOLO 目标检测](../docs/YOLO目标检测.md)。TACO test 和冻结的 Indoor holdout 均不参与训练或选型。
+
+## Indoor Waste v1：CNN 与 YOLO 数据
 
 [官方数据](https://data.mendeley.com/datasets/dy7smxr93r/1)由 Yangke L 发布（DOI `10.17632/dy7smxr93r.1`，[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)）。[来源记录](../data/processed/supplemental/indoor_source.json)保存下载链接和 SHA-256。两个 ZIP 都是平铺归档，以文件名配对 JPEG 和 LabelMe JSON。原框是 1280×720 显示图上的两个对角点；官方没有拆分训练、测试。
 
